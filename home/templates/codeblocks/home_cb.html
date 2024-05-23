@@ -1,0 +1,10 @@
+<!-- home.html -->
+{% extends 'home.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <h2>This is the Home Page</h2>
+    <p>Welcome to the home page of My Site.</p>
+    {% include 'home/codeblocks/some_block.html' %}
+{% endblock %}
