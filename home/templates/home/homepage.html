@@ -1,13 +1,22 @@
-{% extends 'home/homepage_blocks.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Site</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 
-{% block navbar %}
-<div class="navbar">
-    <h1>Inventory and Sales Manager</h1>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <header>
+        {% block home_navbar %}
+        {% endblock %}
+    </header>
 
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-    <a href="#news">News</a>
-    <a class="active" href="#home">Home</a>
 
-</div>
-{% endblock %}
+    <footer>
+        <p>&copy; 2024 My Site</p>
+    </footer>
+</body>
+</html>
