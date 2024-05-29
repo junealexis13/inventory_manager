@@ -70,11 +70,20 @@ button.cta-bt:hover {
   border: none;
   cursor: pointer;
   border-radius: 25%;
-  background-color: #24252A;
+  background-color: #24252a00;
   color: #edf0f1;
   transition: all 0.25s;
 }
 
+
+.toggle_menu > p {
+  padding: 0;
+  font-family: var(--global-font-style-navbar-menu);
+  font-size: 1rem;
+  color: white;
+  align-items: center;
+  text-align: right;
+}
 .toggle_menu > button > span {
   font-size: 2rem;
 }
@@ -98,7 +107,13 @@ button.cta-bt:hover {
   padding: 30px 10%;
 }
 
+.menu_extend {
+  display: none;
+}
+
+
 @media screen and (max-width: 996px) {
+  nav,
   .navbar li,
   .navbar a,
   .navbar .cta-bt {
@@ -106,7 +121,8 @@ button.cta-bt:hover {
   }
 
   .toggle_menu {
-    display: block;
+    display: flex;
+    flex-direction: row;
   }
 
   .navbar {
@@ -115,5 +131,38 @@ button.cta-bt:hover {
     align-items: center;
     padding: 30px 3.5%;
   }
-  
+
+  .menu_extend {
+    display: none;
+  }
+
+  .menu_extend > ul {
+    list-style: none;
+    text-align: right;
+    position: absolute;
+    right: 50px;
+    font-size: 1rem;
+    background-color: #dadada;
+    border-radius: 5%;  
+  }
+
+  .menu_extend > ul > li > a{
+    display: block;
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 1rem;
+    color: black;
+    font-family: var(--global-font-style-navbar-menu);
+    border-radius: 5%;
+    transition: all 0.35s ease;
+  }
+
+  .menu_extend > ul > li > a:hover{
+    background-color: rgb(170, 170, 170);
+    font-weight: 500;
+
+
+  }
+
+    
 }

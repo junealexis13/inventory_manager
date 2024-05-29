@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* Global Variables */
+:root {
+    --global-font-style-navbar-menu: "Roboto Mono";
+    --global-font-style-navbar-title: "DM Serif Display";
+    --global-font-style-navbar-section-title: "Outfit";
+  }
+  
+.app_gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+

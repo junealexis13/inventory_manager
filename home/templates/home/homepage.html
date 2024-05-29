@@ -5,7 +5,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/app_gallery.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
@@ -14,9 +14,11 @@
         {% endblock %}
     </header>
 
+    {% block app_gallery %}
+    {% endblock %}
 
     <footer>
-        <p>&copy; 2024 My Site</p>
+        <script src="{% static 'js/navbar.js' %}"></script>
     </footer>
 </body>
 </html>
