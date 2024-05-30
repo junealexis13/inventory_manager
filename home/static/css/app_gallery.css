@@ -5,6 +5,7 @@
     --global-font-style-navbar-menu: "Roboto Mono";
     --global-font-style-navbar-title: "DM Serif Display";
     --global-font-style-navbar-section-title: "Outfit";
+    --wrapper-dims: clamp(100px, 150px + 0.5dvw, 200px)
   }
   
 .app_gallery {
@@ -17,12 +18,13 @@
 
 .section_title > h1 {
     font-family: var(--global-font-style-navbar-title);
+    margin: 1.5rem 0;
 }
 
 .tiles {
     display: grid;
-    grid-template-columns: repeat(2, minmax(270px, 1fr));
-    grid-template-rows: repeat(2, minmax(270px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 1.5rem;
 }
 
@@ -40,8 +42,8 @@
     align-items: center;
     flex-direction: column;
     background-color: rgb(208, 208, 208);
-    width: 200px;
-    height: 200px;
+    width: var(--wrapper-dims);
+    height: var(--wrapper-dims);
     border-radius: 25px;
     border: none;
     transition: all 0.5s;
@@ -53,7 +55,7 @@
 }
 
 .box_wrapper > img {
-    height: 100px;
+    height: clamp(40px, 40px + 0.5dvw, 100px);
     width: auto;
 }
 

@@ -26,11 +26,13 @@
   font-family: var(--global-font-style-navbar-section-title);
   font-weight: 300;
   color: #edf0f1;
+
 }
 
 .navbar h1 > span {
   font-family: var(--global-font-style-navbar-title);
   font-weight: 500;
+  font-size: clamp(1rem, 1.5rem + 2dvw, 5rem);
 }
 
 .nav_links {

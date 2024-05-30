@@ -13,6 +13,7 @@
 {% block list_products %}
     {% if product_number == 0 %}
         {% include "chunks/products_noneview.html" %}
+        {% include "chunks/products_tools.html" %}
     {% else %}
         {% for item in products %}
             <p>{{ item.category }}</p>
