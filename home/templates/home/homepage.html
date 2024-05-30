@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Site</title>
+    <title>A.J. MGT Admin</title>
     {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/mgt.ico' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/app_gallery.css' %}">
@@ -16,6 +17,12 @@
 
     {% block app_gallery %}
     {% endblock %}
+
+
+    {% block footer_float %}
+    {% endblock %}
+    
+    <i class="{{ view.get_meta_icon }}"></i>
 
     <footer>
         <script src="{% static 'js/navbar.js' %}"></script>

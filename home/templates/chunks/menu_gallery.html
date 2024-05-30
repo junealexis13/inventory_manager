@@ -3,10 +3,42 @@
         <h1>Management Tools</h1>
     </div>
     <div class="tiles">
-        <a href="add_products">Add products</a>
-        <a href="{% url 'mngr-dashboard' %}">Dashboard</a>
-        <a href="inventory">Inventory</a>
-        <a href="account">Account Management</a>
+        
+        <div class="box">
+            <a href="add_products">
+                <div class="box_wrapper">
+                    <img src="../../static/images/add-product.png" alt="add_product">
+                    <p>Add Product Categories</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="box">
+            <a href="{% url 'mngr-dashboard' %}">
+                <div class="box_wrapper">
+                    <img src="../../static/images/dashboard.png" alt="dashboard">
+                    <p>Dashboard</p>  
+                </div>
+            </a> 
+        </div>
+        
+        <div class="box">
+            <a href="inventory">
+                <div class="box_wrapper">
+                    <img src="../../static/images/inventory.png" alt="inventory">
+                    <p>Inventory</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="box">
+            <a href="account">
+                <div class="box_wrapper">
+                    <img src="../../static/images/user-avatar.png" alt="account">
+                    <p>Account Management</p>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
 
