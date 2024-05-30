@@ -1,0 +1,21 @@
+{% extends "home/add_product.html" %}
+
+{% block product_navbar %}
+{% include "chunks/navbar.html" %}
+{% endblock %}
+
+
+{% block product_forms %}
+{% include "chunks/product_forms.html" %}
+{% endblock %}
+
+
+{% block list_products %}
+    {% if product_number == 0 %}
+        {% include "chunks/products_noneview.html" %}
+    {% else %}
+        {% for item in products %}
+            <p>{{ item.category }}</p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

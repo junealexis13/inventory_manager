@@ -121,6 +121,13 @@ button.cta-bt:hover {
   .toggle_menu {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .toggle_menu > p {
+    text-align: center;
+    margin: 0;
   }
 
   .navbar {

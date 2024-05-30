@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+:root {
+  --global-font-style-navbar-menu: "Roboto Mono";
+  --global-font-style-navbar-title: "DM Serif Display";
+  --global-font-style-navbar-section-title: "Outfit";
+}
+
+.section {
+  display: flex;
+  margin: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.product_cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(208, 208, 208);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 80dvw;
+  gap: 10px;
+}
+
+.product_cont > p , small{
+  font-family: var(--global-font-style-navbar-menu);
+  margin: 0;
+  text-align: center;
+}
+
+.add_elements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.add_elements > a {
+  text-decoration: none;
+}
+
+.mini_button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 80px;
+  background-color: azure;
+  border-radius: 10px;
+  border: 3px, solid, brown;
+}
+
+.mini_button > * {
+  color: brown;
+  margin: 10px 1rem;
+
+}
+
+.mini_button > span {
+  font-size: clamp(2rem, 2.5rem, 4rem);
+}
+.mini_button > small {
+  margin: 2px 1rem;
+  font-size: clamp(.5rem, .75rem, 1rem);
+}
+
+.section > h1 {
+  font-family: var(--global-font-style-navbar-section-title);
+}
+
+@media screen and (max-width: 996px) {
+  .add_elements{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .mini_button {
+    min-width: 90px; /* Adjust the minimum width for smaller screens */
+  }
+  .mini_button > small {
+    font-size: clamp(.4rem, .5rem + .5dvw, .8rem); /* Adjust the font size for smaller screens */
+    margin: 5px 1rem;
+  }
+  .mini_button > span {
+    font-size: clamp(.7rem, 4rem + 7dvw, 3rem);
+    margin: 5px;
+  }
+  .mini_button > * {
+    color: brown;
+
+  }
+  .add_elements {
+    gap: 0.2rem;
+  }
+  }
+  

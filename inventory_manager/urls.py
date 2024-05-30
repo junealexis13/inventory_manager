@@ -21,6 +21,7 @@ from home import views
 urlpatterns = [
     path('',views.landing_page, name="mngr-home"),
     path('admin',admin.site.urls, name="mngr-admin"),
+    path('products',views.add_product, name="mngr-products"),
     path('login',views.login_page, name="mngr-login" ),
     path("dashboard", views.dashboard, name="mngr-dashboard")
 ]
