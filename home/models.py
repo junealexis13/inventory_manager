@@ -1,11 +1,14 @@
 import uuid
+import random
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.db import models
 
+def random_string(strings):
+    return random.choice(strings)
 
 class Category(models.Model):
-    category = models.CharField(max_length=50, help_text="Specify the Product Category. Note that this will be reused for each product.")
+    category = models.CharField(max_length=50)
 
     def __str__(self):
         return self.category
@@ -30,20 +33,23 @@ class Product(models.Model):
 class Supplier(models.Model):
     name = models.CharField(max_length=255)
     contact = models.CharField(max_length=255)
+    email = models.CharField(max_length=255, null=True, blank=True)
+    website = models.CharField(max_length=255, null=True, blank=True)
     supplier_code = models.CharField(max_length=50, unique=True, editable=False)
 
     def __str__(self):
         return self.name
 
 class Stock(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    stock_name = models.CharField(max_length=255, default=random_string(["Gasul X","Wonder Gasul","Awesome Gasul","Gasul na Cool","Oh my Gas","Gas Gas Gas!"]))
+    product = models.OneToOneField(Product, on_delete=models.SET_NULL, null=True)
     quantity = models.IntegerField()
     location = models.CharField(max_length=255)
     minimum_quantity = models.IntegerField(null=True, blank=True)
-    supplier = models.ForeignKey(Supplier, on_delete=models.SET_NULL, null=True)
-    date_received = models.DateField()
-    expiry_date = models.DateField(null=True, blank=True)
-    date_last_ordered = models.DateField(null=True, blank=True)
+    supplier = models.OneToOneField(Supplier, on_delete=models.SET_NULL, null=True)
+    date_received = models.DateField(help_text="YYYY-MM-DD")
+    expiry_date = models.DateField(null=True, blank=True, help_text="YYYY-MM-DD")
+    date_last_ordered = models.DateField(null=True, blank=True, help_text="YYYY-MM-DD")
     status = models.CharField(max_length=50, choices=[('available', 'Available'), ('out_of_stock', 'Out of Stock'), ('phased_out', 'Phased Out')])
 
     def __str__(self):

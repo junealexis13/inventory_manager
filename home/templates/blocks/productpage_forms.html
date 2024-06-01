@@ -1,0 +1,20 @@
+{% extends "home/inventory_forms.html"%}
+
+{% block product_navbar %}
+{% include "chunks/navbar.html" %}
+{% endblock %}
+
+{%  block forms %}
+    {% if formID == "category" %}
+        {% include "chunks/forms/category.html" %}
+    {% elif formID == "supplier" %}
+        {% include "chunks/forms/supplier.html" %}
+    {% elif formID == "productSpecs" %}
+        {% include "chunks/forms/product_specs.html" %}
+    {% elif formID == "stocks" %}
+        {% include "chunks/forms/stocks.html" %}
+    {% else %}
+        {% include "chunks/forms/submitted.html" %} 
+    {% endif %}
+{%  endblock %}
+

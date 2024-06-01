@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from home import views
 
+
 urlpatterns = [
-    path('',views.landing_page, name="mngr-home"),
-    path('admin',admin.site.urls, name="mngr-admin"),
-    path('products',views.add_product, name="mngr-products"),
-    path('login',views.login_page, name="mngr-login" ),
-    path("dashboard", views.dashboard, name="mngr-dashboard")
+    path('admin/', admin.site.urls, name="admin"),
+    path('', views.landing_page, name="mngr-home"),
+    path('products/', views.add_product, name="mngr-products"),
+    path('inventory_forms/', views.product_forms, name="mngr-forms"),
+    path('login/', views.login_page, name="mngr-login"),
+    path('dashboard/', views.dashboard, name="mngr-dashboard"),
 ]

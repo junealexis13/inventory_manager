@@ -1,0 +1,14 @@
+<center>
+    <h1>
+        Supplier Information
+    </h1>
+    <form action="" method=POST>
+        {% csrf_token %}
+        <div class="form_style">
+            {{ form.as_p }}
+        </div>
+        <p>You can request to add needed fields.</p>
+        <input type="submit" value="Submit" class="btn btn-secondary">
+    </form>
+
+</center>

@@ -1,7 +1,7 @@
 
 
 <div class="add_elements">
-    <a href="#">
+    <a href="{% url 'mngr-forms' %}?formID=category">
         <div class="mini_button">
             <span class="material-symbols-outlined">category</span>
             <small>Category</small>
@@ -9,7 +9,7 @@
 
         <!-- Category -->
     </a>
-    <a href="#">
+    <a href="{% url 'mngr-forms' %}?formID=supplier">
         <div class="mini_button">
             <span class="material-symbols-outlined">person_add</span>
             <small>Add Supplier</small>
@@ -17,14 +17,14 @@
         </div>
         
     </a>
-    <a href="#">
+    <a href="{% url 'mngr-forms' %}?formID=productSpecs">
         <div class="mini_button">
             <span class="material-symbols-outlined">inventory_2</span>
             <small>Product Specs</small>
         </div>
         <!-- Product Specs or Product Model-->
     </a>
-    <a href="#">
+    <a href="{% url 'mngr-forms' %}?formID=stocks">
         <div class="mini_button">
             <span class="material-symbols-outlined">checklist</span>
             <small>Inventory</small>
