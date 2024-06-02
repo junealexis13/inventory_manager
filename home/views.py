@@ -8,8 +8,8 @@ def landing_page(request):
 
 def add_product(request):
     vars = {}
-    vars["products"] = models.Stock.objects.all
-    vars["product_number"] = models.Stock.objects.count()
+    vars["products"] = models.Product.objects.all
+    vars["product_number"] = models.Product.objects.count()
     return render(request, "blocks/productpage_blocks.html",vars)
 
 def product_forms(request):

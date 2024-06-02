@@ -16,7 +16,7 @@
         {% include "chunks/products_tools.html" %}
     {% else %}
         {% for item in products %}
-            <p>{{ item.stock_name }}</p>
+            <p>{{ item.product_name }}</p>
             {% include "chunks/products_tools.html" %}
         {% endfor %}
     {% endif %}
