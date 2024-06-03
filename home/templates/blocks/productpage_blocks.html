@@ -15,9 +15,51 @@
         {% include "chunks/products_noneview.html" %}
         {% include "chunks/products_tools.html" %}
     {% else %}
-        {% for item in products %}
-            <p>{{ item.product_name }}</p>
-            {% include "chunks/products_tools.html" %}
-        {% endfor %}
+            <div class="p_wrapper">
+                {% for item in products %}
+                <div class="p_container">
+                    <p class="pname">{{ item.product_name }}</p>
+                    <p class="category"><span>Product Category:</span> {{ item.category }}</p>
+                    <p class="SKU"><span>SKU:</span> {{ item.SKU }}</p>
+                    <p class="selling_p"><span>Sold For:</span> &#x20B1;{{ item.selling_price }}</p>
+                    <p class="weight"><span>Weight:</span> {{ item.weight|floatformat:0 }}kg</p>
+            
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal{{ item.id }}">
+                        View Metadata
+                    </button>
+            
+                    <!-- Modal View-->
+                    <div class="modal fade" id="exampleModal{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel{{ item.id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel{{ item.id }}">{{ item.product_name }}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="category"><span>Product Category:</span> {{ item.category }}</p>
+                                    <p class="SKU"><span>SKU:</span> {{ item.SKU }}</p>
+                                    <p class="weight"><span>Weight:</span> {{ item.weight|floatformat:0 }}kg</p>
+                                    <p class="description"><span>Description:</span> {{ item.description }}</p>
+                                    <p class="selling_p"><span>Sold For:</span> &#x20B1;{{ item.selling_price }}</p>
+                                    <p class="cost"><span>Acquisition Cost:</span> &#x20B1;{{ item.cost_price }}</p>
+                                    <p class="notes"><span>Remarks/Notes:</span> {{ item.notes }}</p>
+                                    <p class="discount"><span>Special Discount or Promo:</span> &#x20B1;{{ item.discount }}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+             
+            </div>
+
+        <p style="font-weight: bold;">Tools</p>
+        {% include "chunks/products_tools.html" %}
+
     {% endif %}
 {% endblock %}

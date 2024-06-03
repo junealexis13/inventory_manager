@@ -5,7 +5,7 @@
     --global-font-style-navbar-menu: "Roboto Mono";
     --global-font-style-navbar-title: "DM Serif Display";
     --global-font-style-navbar-section-title: "Outfit";
-    --wrapper-dims: clamp(100px, 150px + 0.5dvw, 200px)
+    --wrapper-dims: clamp(5rem, 10rem + 10dvw, 12rem)
   }
   
 .app_gallery {
@@ -26,6 +26,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 1.5rem;
+    padding: 1rem 0;
 }
 
 .box {
@@ -42,11 +43,12 @@
     align-items: center;
     flex-direction: column;
     background-color: rgb(208, 208, 208);
-    width: var(--wrapper-dims);
-    height: var(--wrapper-dims);
+    width: 20rem;
+    height: 10rem;
     border-radius: 25px;
     border: none;
     transition: all 0.5s;
+    padding:1rem 0;
 }
 
 .box_wrapper:hover{
@@ -55,16 +57,24 @@
 }
 
 .box_wrapper > img {
-    height: clamp(40px, 40px + 0.5dvw, 100px);
+    height: clamp(60px, 60px + 1dvw, 120px);
     width: auto;
 }
 
 .box_wrapper > p {
     text-align: center;
     font-family: var(--global-font-style-navbar-menu);
+    font-size: .7rem;
 }
 
 .box > a {
     text-decoration: none;
     color: black;
+}
+
+@media screen and (max-width:996px) {
+    .box_wrapper {
+        width: var(--wrapper-dims)2rem;
+        height: var(--wrapper-dims);
+    }
 }
