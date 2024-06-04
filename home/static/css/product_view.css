@@ -71,7 +71,7 @@
 
 .add_elements {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   margin: 2rem 0;
   gap: 1rem;
@@ -93,7 +93,10 @@
 
   border-radius: 10px;
   border: 1px, dashed, rgb(0, 0, 0);
+
+  transition: all 0.5s ease;
 }
+
 
 .mini_button > * {
   color: black;
@@ -107,11 +110,109 @@
 .mini_button > small {
   margin: 2px 1rem;
   font-size: clamp(.5rem, .75rem, 1rem);
+  transition: all 0.5s ease;
+}
+
+.mini_button:hover {
+  background-color: brown;
+}
+
+.mini_button:hover small, .mini_button:hover span {
+  color: white;
+  transition: color 0.5s ease;
 }
 
 .section > h1 {
   font-family: var(--global-font-style-navbar-title);
 }
+
+.wrapper_cat_supp {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 2rem;
+  width: 80dvw;
+}
+
+.wrapper_cat_supp > div {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid brown;
+  border-radius: 25px ;
+  padding: 0.5rem 1rem;
+}
+
+.category_view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.category_view > h1 , .supplier_view > h1 {
+  font-size: 1.5rem;
+  font-family: var(--global-font-style-navbar-section-title);
+  text-align: center;
+  margin: 5px;
+  padding: 3px;
+}
+
+.category_view > h2, .supplier_view > h2 {
+  font-size: 1.5rem;
+  font-family: var(--global-font-style-navbar-section-title);
+  margin: 10px;
+}
+
+.cat_wrap, .sup_wrap {
+  display: block;
+  margin: 3px;
+  padding: 4px;
+  width: 100%;
+
+  border: 1px dashed black;
+  border-radius: 10px;
+
+  transition: all 0.5s ease;
+}
+
+.cat_wrap:hover, .sup_wrap:hover {
+  background-color: brown;
+}
+
+.cat_wrap:hover .content, .sup_wrap:hover .content{
+  color: white;
+
+  transition: color 0.5s ease;
+}
+
+.cat_wrap > a , .sup_wrap  > a {
+  display: block;
+  text-decoration: none;
+  font-family: var(--global-font-style-navbar-menu);
+  font-weight: bold;
+  text-align: center;
+}
+
+.cat_wrap > a > p, .sup_wrap > a > p{
+  color: black;
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.supplier_view {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+.sup_wrap > a:nth-child(1) > p {
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 
 @media screen and (max-width: 996px) {
   .add_elements{
@@ -141,5 +242,12 @@
 
   .p_wrapper {
     grid-template-columns: auto;
+  }
+
+  .wrapper_cat_supp {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 2rem;
+    width: 60dvw;
   }
 }

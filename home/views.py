@@ -12,6 +12,10 @@ def add_product(request):
     vars = {}
     vars["products"] = models.Product.objects.all()
     vars["product_number"] = models.Product.objects.count()
+    vars["categories"] = models.Category.objects.all()
+    vars["category_numbers"] = models.Category.objects.count()
+    vars["suppliers"] = models.Supplier.objects.all()
+    vars["supplier_numbers"] = models.Supplier.objects.count()
     return render(request, "blocks/productpage_blocks.html", vars)
 
 def product_forms(request):
@@ -57,14 +61,31 @@ def dashboard(request):
 
 def edit_product_specs(request, pk):
     formID = request.GET.get('formID', 'default')
-    product = get_object_or_404(models.Product, pk=pk)
     submitted = False
     if request.method == 'POST':
-        form = forms.ProductForms(request.POST, instance=product)
+        if formID == "productSpecs":
+            object = get_object_or_404(models.Product, pk=pk)
+            form = forms.ProductForms(request.POST, instance=object)
+        elif formID == "category":
+            object = get_object_or_404(models.Category, pk=pk)
+            form = forms.CategoryForms(request.POST, instance=object)
+        elif formID == "supplier":
+            object = get_object_or_404(models.Supplier, pk=pk)
+            form = forms.SupplierForms(request.POST, instance=object)
+
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/inventory_forms?submitted=True')
     else:
-        form = forms.ProductForms(instance=product)
+
+        if formID == "productSpecs":
+            object = get_object_or_404(models.Product, pk=pk)
+            form = forms.ProductForms(instance=object)
+        elif formID == "category":
+            object = get_object_or_404(models.Category, pk=pk)
+            form = forms.CategoryForms(instance=object)
+        elif formID == "supplier":
+            object = get_object_or_404(models.Supplier, pk=pk)
+            form = forms.SupplierForms(instance=object)
 
     return render(request, "blocks/productpage_forms.html", {"formID":formID,'form': form, "submitted": submitted})

@@ -13,7 +13,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto;
 }
 
 .section_title > h1 {
@@ -25,8 +24,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 1.5rem;
-    padding: 1rem 0;
+    gap: 1rem;
+
 }
 
 .box {
@@ -73,8 +72,11 @@
 }
 
 @media screen and (max-width:996px) {
+    .tiles{
+        grid-template-columns: repeat(1,1fr);
+    }
+
     .box_wrapper {
-        width: var(--wrapper-dims)2rem;
-        height: var(--wrapper-dims);
+        width: 40dvw;
     }
 }

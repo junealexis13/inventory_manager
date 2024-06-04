@@ -64,3 +64,38 @@
 
     {% endif %}
 {% endblock %}
+
+{% block view_others %}
+<div class="wrapper_cat_supp">
+    <div class="category_view">
+        {% if category_numbers == 0 %}
+            <h1>No product category created</h1>
+        {% else %}
+            <h2 class="section_title">Product Categories</h2>
+            {% for cat in categories %}
+                <div class="cat_wrap">
+                    <a href="{% url 'edit_product' pk=cat.pk %}?formID=category"><p class="content">{{ cat.category }}</p></a>
+                </div>
+
+            {% endfor %}
+        {%endif %}
+        <small style="font-size: 10px;">Click to view</small>
+    </div>
+    <div class="supplier_view">
+        {% if supplier_numbers == 0 %}
+        <h1>No Suppliers Created</h1>
+    {% else %}
+        <h2 class="section_title">Suppliers</h2>
+        {% for sup in suppliers %}
+            <div class="sup_wrap">
+                <a href="{% url 'edit_product' pk=sup.pk %}?formID=supplier"><p class="content">{{ sup.name }}</p></a>
+                <a href="{% url 'edit_product' pk=sup.pk %}?formID=supplier"><p class="content">{{ sup.contact }}</p></a>
+                <a href="{% url 'edit_product' pk=sup.pk %}?formID=supplier"><p class="content">{{ sup.email }}</p></a>
+            </div>
+            <small style="font-size: 10px;">Click to view</small>
+    
+        {% endfor %}
+    {%endif %}
+    </div>
+</div>
+{% endblock %}

@@ -41,6 +41,7 @@ class Supplier(models.Model):
         return self.name
 
 class Stock(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     stock_name = models.CharField(max_length=255, default=random_string(["Gasul X","Wonder Gasul","Awesome Gasul","Gasul na Cool","Oh my Gas","Gas Gas Gas!"]))
     product = models.OneToOneField(Product, on_delete=models.SET_NULL, null=True)
     quantity = models.IntegerField()
