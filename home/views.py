@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from django.views.generic.edit import UpdateView
 from django.http import HttpResponse, HttpResponseRedirect
 from . import models, forms
 
@@ -8,9 +10,9 @@ def landing_page(request):
 
 def add_product(request):
     vars = {}
-    vars["products"] = models.Product.objects.all
+    vars["products"] = models.Product.objects.all()
     vars["product_number"] = models.Product.objects.count()
-    return render(request, "blocks/productpage_blocks.html",vars)
+    return render(request, "blocks/productpage_blocks.html", vars)
 
 def product_forms(request):
     formID = request.GET.get('formID', 'default')
@@ -51,3 +53,18 @@ def login_page(request):
 
 def dashboard(request):
     return render(request, "home/dashboard.html", {})
+
+
+def edit_product_specs(request, pk):
+    formID = request.GET.get('formID', 'default')
+    product = get_object_or_404(models.Product, pk=pk)
+    submitted = False
+    if request.method == 'POST':
+        form = forms.ProductForms(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/inventory_forms?submitted=True')
+    else:
+        form = forms.ProductForms(instance=product)
+
+    return render(request, "blocks/productpage_forms.html", {"formID":formID,'form': form, "submitted": submitted})
