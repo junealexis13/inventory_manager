@@ -1,0 +1,43 @@
+<div class="remove_entry_wrapper">
+    <h1>Remove Items</h1>
+    <p>Select all items that you want to remove from the database.</p>
+    <div class="item_wrapper">
+        <form id="deleteForm" action="" method="post">
+            {% csrf_token %}
+            <div class="item_container">
+                {{ prodsObj.as_p }}
+            </div>
+            <div class="item_container">
+                {{ catObj.as_p }}
+            </div>
+            <div class="item_container">
+                {{ suppObj.as_p }}
+            </div>
+        </form>
+    </div>
+    <p><strong>Note:</strong> Deleting Categories or Supplier will also delete the Products that has the same element.</p>
+    
+    <!-- Button -->
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+        <p>Remove</p>
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirm Entry Removal</h5>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to remove the content/s? This is irreversible.
+                    <ul id="selectedItemsList"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

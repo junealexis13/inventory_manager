@@ -14,7 +14,6 @@ class CategoryForms(ModelForm):
             "category" : forms.TextInput(attrs={'class': 'form-control'})
         }
 
-
 class ProductForms(ModelForm):
     class Meta:
         model = Product
@@ -44,3 +43,21 @@ class SupplierForms(ModelForm):
         super(SupplierForms, self).__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs.update({'class': 'form-control','cols':'60'})
+
+class ProductDeleteForm(forms.Form):
+    products = forms.ModelMultipleChoiceField(
+        queryset=Product.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )
+
+class CategoryDeleteForm(forms.Form):
+    category = forms.ModelMultipleChoiceField(
+        queryset=Category.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )
+
+class SupplierDeleteForm(forms.Form):
+    supplier = forms.ModelMultipleChoiceField(
+        queryset=Supplier.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )

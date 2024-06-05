@@ -38,19 +38,93 @@ def product_forms(request):
     else:
         if formID == "category":
             form = forms.CategoryForms
+            productObj = None
+            catObj = None
+            suppObj = None
+
         elif formID == "supplier":
             form = forms.SupplierForms
+            productObj = None
+            catObj = None
+            suppObj = None
+
         elif formID == "productSpecs":
             form = forms.ProductForms
+            productObj = None
+            catObj = None
+            suppObj = None
+
         elif formID == "stocks":
             form = forms.StockForms
+            productObj = None
+            catObj = None
+            suppObj = None
+
+        elif formID == "removeItems":
+            form = None
+            productObj = forms.ProductDeleteForm(request.POST)
+            catObj = forms.CategoryDeleteForm(request.POST)
+            suppObj = forms.SupplierDeleteForm(request.POST)
+
+            form_logic = (productObj.is_valid(), catObj.is_valid(), suppObj.is_valid())
+
+            match form_logic:
+                case (True, True, True):
+                    products_to_delete = productObj.cleaned_data['products']
+                    category_to_delete = catObj.cleaned_data['category']
+                    supplier_to_delete = suppObj.cleaned_data['supplier']
+                    products_to_delete.delete()
+                    category_to_delete.delete()
+                    supplier_to_delete.delete()
+                    return HttpResponseRedirect('/products/')
+
+                case (True, True, False):
+                    products_to_delete = productObj.cleaned_data['products']
+                    category_to_delete = catObj.cleaned_data['category']
+                    products_to_delete.delete()
+                    category_to_delete.delete()
+                    return HttpResponseRedirect('/products/')
+
+                case (False ,True ,True):
+                    category_to_delete = catObj.cleaned_data['category']
+                    supplier_to_delete = suppObj.cleaned_data['supplier']
+                    category_to_delete.delete()
+                    supplier_to_delete.delete()
+                    return HttpResponseRedirect('/products/')
+
+                case (True, False, True):
+                    products_to_delete = catObj.cleaned_data['category']
+                    supplier_to_delete = suppObj.cleaned_data['supplier']
+                    products_to_delete.delete()
+                    supplier_to_delete.delete()
+                    return HttpResponseRedirect('/products/')
+
+                case (True, False, False):
+                    products_to_delete = productObj.cleaned_data['products']
+                    products_to_delete.delete()
+                    return HttpResponseRedirect('/products/')
+
+                case (False, True, False):
+                    category_to_delete = productObj.cleaned_data['products']
+                    category_to_delete.delete()
+                    return HttpResponseRedirect('/products/')
+
+                case (False, False, True):
+                    products_to_delete = productObj.cleaned_data['products']
+                    products_to_delete.delete()
+                    return HttpResponseRedirect('/products/')
+
         else:
             form = None
+            productObj = None
+            catObj = None
+            suppObj = None
 
         if "submitted" in request.GET:
             submitted = True    
 
-    return render(request, "blocks/productpage_forms.html",{"formID": formID, "form": form, "submitted": submitted})
+    return render(request, "blocks/productpage_forms.html",{"formID": formID, "form": form, "submitted": submitted,
+        "prodsObj":productObj,"catObj":catObj,"suppObj":suppObj})
 
 def login_page(request):
     return render(request, "home/login.html", {})

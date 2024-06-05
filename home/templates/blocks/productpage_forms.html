@@ -13,6 +13,8 @@
         {% include "chunks/forms/product_specs.html" %}
     {% elif formID == "stocks" %}
         {% include "chunks/forms/stocks.html" %}
+    {% elif formID == "removeItems" %}
+        {% include "chunks/forms/remove_entries.html" %}
     {% else %}
         {% include "chunks/forms/submitted.html" %} 
     {% endif %}
