@@ -73,24 +73,25 @@
                 </div>
 
             {% endfor %}
+            <small style="font-size: 10px;">Click to view</small>
         {%endif %}
-        <small style="font-size: 10px;">Click to view</small>
+
     </div>
     <div class="supplier_view">
         {% if supplier_numbers == 0 %}
-        <h1>No Suppliers Created</h1>
-    {% else %}
-        <h2 class="section_title">Suppliers</h2>
-        {% for sup in suppliers %}
-            <div class="sup_wrap">
-                <a href="{% url 'edit_product' pk=sup.pk %}?formID=supplier"><p class="content">{{ sup.name }}</p></a>
-                <a href="{% url 'edit_product' pk=sup.pk %}?formID=supplier"><p class="content">{{ sup.contact }}</p></a>
-                <a href="{% url 'edit_product' pk=sup.pk %}?formID=supplier"><p class="content">{{ sup.email }}</p></a>
-            </div>
+            <h1>No Suppliers Created</h1>
+        {% else %}
+            <h2 class="section_title">Suppliers</h2>
+            {% for sup in suppliers %}
+                <div class="sup_wrap">
+                    <a href="{% url 'edit_product' pk=sup.pk %}?formID=supplier"><p class="content">{{ sup.name }}</p></a>
+                    <a href="{% url 'edit_product' pk=sup.pk %}?formID=supplier"><p class="content">{{ sup.contact }}</p></a>
+                    <a href="{% url 'edit_product' pk=sup.pk %}?formID=supplier"><p class="content">{{ sup.email }}</p></a>
+                </div>
+                
+            {% endfor %}
             <small style="font-size: 10px;">Click to view</small>
-    
-        {% endfor %}
-    {%endif %}
+        {%endif %}
     </div>
 </div>
 {% endblock %}

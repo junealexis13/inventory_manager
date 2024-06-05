@@ -1,0 +1,13 @@
+{% extends "home/entry_mngr.html"%}
+
+{% block product_navbar %}
+{% include "chunks/navbar.html" %}
+{% endblock %}
+
+{% block entry_viewer %}
+    {% if var_isEmpty %}
+        {% include "chunks/products_noneview.html" %}
+    {% else %}
+        {% include "chunks/entry_viewer.html" %}
+    {% endif %}
+{% endblock %}

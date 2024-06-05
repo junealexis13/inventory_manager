@@ -3,6 +3,7 @@ import random
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.db import models
+from django.utils import timezone
 
 def random_string(strings):
     return random.choice(strings)
@@ -48,7 +49,7 @@ class Stock(models.Model):
     location = models.CharField(max_length=255)
     minimum_quantity = models.IntegerField(null=True, blank=True)
     supplier = models.OneToOneField(Supplier, on_delete=models.SET_NULL, null=True)
-    date_received = models.DateField(help_text="YYYY-MM-DD")
+    date_received = models.DateField(default=timezone.now, editable=True,help_text="YYYY-MM-DD")
     expiry_date = models.DateField(null=True, blank=True, help_text="YYYY-MM-DD")
     date_last_ordered = models.DateField(null=True, blank=True, help_text="YYYY-MM-DD")
     status = models.CharField(max_length=50, choices=[('available', 'Available'), ('out_of_stock', 'Out of Stock'), ('phased_out', 'Phased Out')])

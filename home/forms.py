@@ -44,20 +44,13 @@ class SupplierForms(ModelForm):
         for field in self.fields.values():
             field.widget.attrs.update({'class': 'form-control','cols':'60'})
 
-class ProductDeleteForm(forms.Form):
-    products = forms.ModelMultipleChoiceField(
-        queryset=Product.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-    )
+class DeleteForm(forms.Form):
+    product_ids = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label='Product Entries', required=False)
+    category_ids = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label='Category Entries', required=False)
+    supplier_ids = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label='Supplier Entries', required=False)
 
-class CategoryDeleteForm(forms.Form):
-    category = forms.ModelMultipleChoiceField(
-        queryset=Category.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-    )
-
-class SupplierDeleteForm(forms.Form):
-    supplier = forms.ModelMultipleChoiceField(
-        queryset=Supplier.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-    )
+    def __init__(self, *args, **kwargs):
+        super(DeleteForm, self).__init__(*args, **kwargs)
+        self.fields['product_ids'].choices = [(obj.id, str(obj)) for obj in Product.objects.all()]
+        self.fields['category_ids'].choices = [(obj.id, str(obj)) for obj in Category.objects.all()]
+        self.fields['supplier_ids'].choices = [(obj.id, str(obj)) for obj in Supplier.objects.all()]
