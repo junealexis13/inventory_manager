@@ -10,6 +10,16 @@
         {% include "chunks/products_noneview.html" %}
         {% include "chunks/products_tools.html" %}
     {% else %}
+        {% if messages %}
+            {% for message in messages%}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+        {% endif %}
             <div class="p_wrapper">
                 {% for item in products %}
                 <div class="p_container">

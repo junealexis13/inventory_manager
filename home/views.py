@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.views.generic.edit import UpdateView
+from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from . import models, forms
 
@@ -75,7 +76,8 @@ def edit_product_specs(request, pk):
 
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/inventory_forms?submitted=True')
+            messages.success(request,"Form Successfully Updated")
+            return HttpResponseRedirect('/products/')
     else:
 
         if formID == "productSpecs":

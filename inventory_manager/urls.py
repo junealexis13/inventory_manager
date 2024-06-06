@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from home import views
+from inventory import views as ivw
 
 
 urlpatterns = [
@@ -27,5 +28,6 @@ urlpatterns = [
     path('login/', views.login_page, name="mngr-login"),
     path('dashboard/', views.dashboard, name="mngr-dashboard"),
     path('edit_product/<int:pk>/', views.edit_product_specs, name='edit_product'),
-    path('manage_entries', views.manage_entries, name='entry-mngr')
+    path('manage_entries', views.manage_entries, name='entry-mngr'),
+    path('inventory_dashboard/', ivw.inventory_dashboard, name='inventory-dashboard')
 ]
