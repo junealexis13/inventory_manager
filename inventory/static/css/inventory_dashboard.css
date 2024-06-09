@@ -12,7 +12,7 @@
     width: 100%;
     height: auto;
     position: relative;
-    background-color: aqua;
+    background-color: rgb(255, 255, 255);
 
     display: flex;
     direction: row;
@@ -20,7 +20,7 @@
 
 .dashboard_sidebar {
     display: block;
-    width: 15dvw;
+    width: 10dvw;
     height: 100dvh;
-    background-color: rgb(142, 142, 142);
+    background-color: #525355;
 }
