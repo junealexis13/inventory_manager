@@ -6,6 +6,7 @@
 }
 
 .navbar {
+  position: relative;
   box-sizing: border-box;
   margin: 0;
   background-color: #24252A;

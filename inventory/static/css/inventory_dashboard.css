@@ -7,6 +7,13 @@
     --global-font-style-navbar-section-title: "Outfit";
   }
 
+[data-tab-content] {
+    display: none;
+  }
+
+.active[data-tab-content] {
+    display: block;
+}
 
 .dashboard_body {
     width: 100%;
@@ -19,8 +26,89 @@
 }
 
 .dashboard_sidebar {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
     width: 10dvw;
     height: 100dvh;
     background-color: #525355;
+}
+
+.icon_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background-color: rgb(167, 166, 166);
+    border-radius: 1rem;
+    margin: clamp(0.4rem, 0.6rem, 1rem);
+    box-shadow: -5px 5px 3.5px rgb(68, 68, 68);
+}
+
+.icon_container:hover {
+    cursor: pointer;
+    
+}
+
+.icon_container > p {
+    margin: 0;
+    padding: 0;
+}
+
+.icon_container > p > span {
+    font-size: clamp(2rem, 2.5rem, 4rem);
+    color: azure;
+    margin: 1rem;
+    padding: 0;
+
+}
+
+.icon_container > label {
+    font-size: clamp(0.5rem, 1rem, 1.3rem);
+    color: white;
+    margin:0.5rem;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    flex-wrap: 1;
+    
+}
+
+ul > li {
+    display: block;
+    margin: 10px 0;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* UI */
+
+.dashboard_ui {
+    margin: 10px;
+    overflow: auto;
+}
+
+.dashboard_ui > div {
+    height: 80dvh;
+}
+
+@media screen and (max-width:996px) {
+    .icon_container > label {
+        display: none;
+    }
+
+    .icon_container > p > span {
+        font-size: clamp(1.25rem, 1.5rem, 2.5rem);
+        margin: clamp(0.3rem, 0.4rem, 0.5rem);
+    }
 }
