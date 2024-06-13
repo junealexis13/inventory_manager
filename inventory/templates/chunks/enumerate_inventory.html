@@ -1,19 +1,22 @@
 <!-- Will view the element if everything is empty -->
-<div class="empty_body">
-    <h1>There's nothing here!</h1>
-    <lottie-player src="https://lottie.host/03724ec4-5a16-49a8-9ed0-49f806bf4f1f/dhPoiWl7UD.json" background="transparent" speed="1" style="width: 600px; height: 600px" direction="1" mode="normal" loop autoplay></lottie-player>
-    <p>No inventory information was found. Try to add new items in the inventory.<br>
-    Click the button below to add new inventory entries.</p>
-    <a href="{% url 'mngr-forms' %}?formID=stocks">
-        <div class="button_plus">
-            <span class="material-symbols-outlined">
-                add_box
-            </span>
-            <p>Add Entry</p>
-        </div>
-    </a>
-</div>
+{% if inventory_count == 0 %}
+    <div class="empty_body">
+        <h1>There's nothing here!</h1>
+        <lottie-player src="https://lottie.host/03724ec4-5a16-49a8-9ed0-49f806bf4f1f/dhPoiWl7UD.json" background="transparent" speed="1" style="width: 600px; height: 600px" direction="1" mode="normal" loop autoplay></lottie-player>
+        <p>No inventory information was found. Try to add new items in the inventory.<br>
+        Click the button below to add new inventory entries.</p>
+        <a href="{% url 'mngr-forms' %}?formID=stocks">
+            <div class="button_plus">
+                <span class="material-symbols-outlined">
+                    add_box
+                </span>
+                <p>Add Entry</p>
+            </div>
+        </a>
+    </div>
 
-
-
-    
+{% elif inventory_count != 0 %}
+    {% for item in inventory %}
+        <p>{{ item.id }}</p>
+    {% endfor %}
+{% endif %}

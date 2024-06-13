@@ -29,9 +29,7 @@
         </div>
         <div class="dashboard_ui">
             <div id="tabs-stats" data-tab-content class="active">
-                {% if inventory_count == 0 %}
-                    {% include "chunks/enumerate_inventory.html" %}
-                {% endif %}
+                {% include "chunks/enumerate_inventory.html" %}
             </div>
 
             <div id="tabs-item" data-tab-content>
