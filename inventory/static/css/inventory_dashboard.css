@@ -22,7 +22,7 @@
     background-color: rgb(255, 255, 255);
 
     display: flex;
-    direction: row;
+    flex-direction: row;
 }
 
 .dashboard_sidebar {
@@ -90,7 +90,60 @@ ul > li {
 }
 
 
+/* If no inventory is being displayed */
 
+.empty_body {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    margin: 1rem 3rem 0.5rem 1rem;
+    
+}
+
+.empty_body > h1 {
+    font-family: var(--global-font-style-navbar-section-title);
+    font-size: clamp(1rem, 2.5rem, 3rem);
+}
+
+
+.empty_body > p {
+    font-family: var(--global-font-style-navbar-menu);
+}
+
+
+.button_plus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    background-color: rgba(193, 193, 193, 0.744);
+    border-radius: 20px;
+    width: fit-content;
+    padding: 0.5rem;
+
+
+}
+
+.empty_body > a {
+    text-decoration: none;
+    color: black;
+    overflow: hidden;
+}
+
+.button_plus > span {
+    display: inline-block;
+    padding: 0.5rem;
+    color: rgb(131, 131, 131);
+    font-size: 4rem;
+}
+
+.button_plus > p {
+    font-family: var(--global-font-style-navbar-section-title);
+    padding: 0;
+    margin: 0;
+    color: black;
+}
 /* UI */
 
 .dashboard_ui {
