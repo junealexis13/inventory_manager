@@ -13,7 +13,7 @@
                 <li data-tab-target="tabs-stats">
                     <div id="sb-stats" class="icon_container">
                     <p><span class="material-symbols-outlined">inventory_2</span></p>
-                    <label>Inventory Stats</label>
+                    <label>Items</label>
                     </div>
                  </li>
 
@@ -22,14 +22,16 @@
                         <p><span class="material-symbols-outlined">
                             library_books
                             </span></p>
-                        <label>Inventory Items</label>
+                        <label>Stats</label>
                     </div>
                 </li>
             </ul>
         </div>
         <div class="dashboard_ui">
             <div id="tabs-stats" data-tab-content class="active">
-                {% include "chunks/enumerate_inventory.html" %}
+                <div class="tabs_view_wrapper">
+                    {% include "chunks/enumerate_inventory.html" %}
+                </div>
             </div>
 
             <div id="tabs-item" data-tab-content>

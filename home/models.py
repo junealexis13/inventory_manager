@@ -24,6 +24,7 @@ class Product(models.Model):
     category = models.OneToOneField(Category, on_delete=models.SET_NULL, null=True)
     weight = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     image = models.ImageField(upload_to='product_images/', null=True, blank=True)
+    expiry_date = models.DateField(default=timezone.now,null=True, blank=True, help_text="YYYY-MM-DD (Leave Blank if N/A)")
     notes = models.TextField(null=True, blank=True)
     cost_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     selling_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
@@ -44,21 +45,24 @@ class Supplier(models.Model):
 class Stock(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     stock_name = models.CharField(max_length=255, default=random_string(["Gasul X","Wonder Gasul","Awesome Gasul","Gasul na Cool","Oh my Gas","Gas Gas Gas!"]))
-    product = models.OneToOneField(Product, on_delete=models.SET_NULL, null=True)
-    quantity = models.IntegerField()
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     location = models.CharField(max_length=255)
-    minimum_quantity = models.IntegerField(null=True, blank=True)
-    supplier = models.OneToOneField(Supplier, on_delete=models.SET_NULL, null=True)
+    supplier = models.ForeignKey(Supplier, on_delete=models.SET_NULL, null=True)
     date_received = models.DateField(default=timezone.now, editable=True,help_text="YYYY-MM-DD")
-    expiry_date = models.DateField(null=True, blank=True, help_text="YYYY-MM-DD")
     date_last_ordered = models.DateField(null=True, blank=True, help_text="YYYY-MM-DD")
-    status = models.CharField(max_length=50, choices=[('available', 'Available'), ('out_of_stock', 'Out of Stock'), ('phased_out', 'Phased Out')])
-
+    status = models.CharField(max_length=50, choices=[('available', 'Available'), ('not_available','Not Available'), ('phased_out', 'Phased Out')])
+    expiry_date = models.DateField(null=True, blank=True, help_text="YYYY-MM-DD (Expiry defaults with product category expiry)")
+    
     def __str__(self):
         try:
-            return f"{self.product.product_name}"
+            return f"{self.product.product_name}: {self.stock_name}"
         except AttributeError:
             return "N/A"
+
+    def save(self, *args, **kwargs):
+        if self.expiry_date is None and self.product:
+            self.expiry_date = self.product.expiry_date
+        super(Stock, self).save(*args, **kwargs)
 
 
 # Signal to generate random supplier code before saving the model

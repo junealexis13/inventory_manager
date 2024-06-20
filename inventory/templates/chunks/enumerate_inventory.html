@@ -16,7 +16,67 @@
     </div>
 
 {% elif inventory_count != 0 %}
-    {% for item in inventory %}
-        <p>{{ item.id }}</p>
-    {% endfor %}
+    <div class="item_wrapper">
+        <div class="header_wrapper stock_available">
+            <h1>Available Items</h1>
+        </div>
+        <div class="grid_wrap">
+        {% for item in inventory %}
+            {% if item.status == 'available' %}
+                <div class="inventory_container stock_available">
+                    <h1>{{ item.stock_name }}</h1> 
+                    <p>Loc: {{ item.location }}</p>   
+                    <p>Sup: {{ item.supplier.name }}</p>
+                    <p>Exp: {{ item.expiry_date }}</p>  
+                    <hr>
+                    <p class="below">Added: {{ item.date_received }}</p>
+                    <span class="below">id: {{ item.id }}</span> 
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+    <br>
+    <div class="item_wrapper">
+        <div class="header_wrapper stock_not_available">
+            <h1>Unavailable Items</h1>
+        </div>
+        <div class="grid_wrap">
+        {% for item in inventory %}
+            {% if item.status == 'not_available' %}
+                <div class="inventory_container stock_not_available">
+                    <h1>{{ item.stock_name }}</h1> 
+                    <p>Loc: {{ item.location }}</p>   
+                    <p>Sup: {{ item.supplier.name }}</p>
+                    <p>Exp: {{ item.expiry_date }}</p>  
+                    <hr>
+                    <p class="below">Added: {{ item.date_received }}</p>
+                    <span class="below">id: {{ item.id }}</span> 
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+    <br>
+    <div class="item_wrapper">
+        <div class="header_wrapper stock_phased_out">
+            <h1>Phased Out</h1>
+        </div>
+        <div class="grid_wrap">
+        {% for item in inventory %}
+            {% if item.status == 'phased_out' %}
+                <div class="inventory_container stock_phased_out">
+                    <h1>{{ item.stock_name }}</h1> 
+                    <p>Loc: {{ item.location }}</p>   
+                    <p>Sup: {{ item.supplier.name }}</p>
+                    <p>Exp: {{ item.expiry_date }}</p>  
+                    <hr>
+                    <p class="below">Added: {{ item.date_received }}</p>
+                    <span class="below">id: {{ item.id }}</span> 
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+
 {% endif %}
