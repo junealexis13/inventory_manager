@@ -46,6 +46,22 @@ body {
     width: 100%;
 }
 
+.lower_tab_items {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: 2rem;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    padding: 0;
+}
+
+.lower_tab_items > a {
+    text-decoration: none;
+    font-family: var(--global-font-style-navbar-menu);
+    color: rgb(234, 234, 234);
+    margin: 2px 0;
+}
 
 .icon_container {
     display: flex;
