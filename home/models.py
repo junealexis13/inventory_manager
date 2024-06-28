@@ -21,7 +21,7 @@ class Product(models.Model):
     product_name = models.CharField(max_length=255,default="Product 1",help_text="Official product name")
     description = models.TextField(help_text="Tell something about the product.")
     SKU = models.CharField(max_length=50, unique=True, help_text="SKU is a unique ID given mainly by manufacturers. Check the Unit or Documents if SKU is present.")
-    category = models.OneToOneField(Category, on_delete=models.SET_NULL, null=True)
+    category = models.OneToOneField(Category, related_name="products", on_delete=models.SET_NULL, null=True)
     weight = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     image = models.ImageField(upload_to='product_images/', null=True, blank=True)
     expiry_date = models.DateField(default=timezone.now,null=True, blank=True, help_text="YYYY-MM-DD (Leave Blank if N/A)")
@@ -45,7 +45,7 @@ class Supplier(models.Model):
 class Stock(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     stock_name = models.CharField(max_length=255, default=random_string(["Gasul X","Wonder Gasul","Awesome Gasul","Gasul na Cool","Oh my Gas","Gas Gas Gas!"]))
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    product = models.ForeignKey(Product, related_name="stocks", on_delete=models.SET_NULL, null=True)
     location = models.CharField(max_length=255)
     supplier = models.ForeignKey(Supplier, on_delete=models.SET_NULL, null=True)
     date_received = models.DateField(default=timezone.now, editable=True,help_text="YYYY-MM-DD")
