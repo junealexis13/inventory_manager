@@ -1,0 +1,9 @@
+<div class="item_wrapper">
+    <h1>Number of Items by Category</h1>
+    {% for cat, count in item_count.items %}
+    <div class="header_wrapper">
+        <h1>{{ cat }}</h1>
+        <p>{{ count }}</p>
+    </div>
+    {% endfor %}
+</div>
