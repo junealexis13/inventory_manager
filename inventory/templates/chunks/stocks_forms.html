@@ -5,7 +5,7 @@
     <form action="" method=POST>
         {% csrf_token %}
         <div class="form_style">
-            {{ item }}
+            {{ form.as_p }}
         </div>
         <p>You can request to add needed fields.</p>        
         <input type="submit" value="Submit" class="btn btn-secondary">

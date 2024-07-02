@@ -28,5 +28,6 @@ def show_stock_data(request, item_id):
     form = forms.StockForms
 
     var['forms'] = form
-    var['form'] = form
+    var['item'] = item
+    
     return render(request, 'chunks/stocks_forms.html', var)
