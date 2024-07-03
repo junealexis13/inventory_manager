@@ -16,6 +16,10 @@
     </div>
 
 {% elif inventory_count != 0 %}
+    {% for message in messages %}
+        <p class="message_alert">{{ message }}</p>
+    {% endfor %}
+
     <div class="item_wrapper">
         <div class="header_wrapper stock_available">
             <h1>Available Items</h1>
@@ -60,8 +64,12 @@
                                     <p><span class="below">id: {{ item.id }}</span> </p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                    <a href="{% url 'inventory-item' item.id %}">Show</a>
+                                    <a href="{% url 'inventory-item' item.id %}?formID=stocks" data-toggle="tooltip" title="Edit"><span class="material-symbols-outlined">
+                                        edit
+                                        </span></a>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-toggle="tooltip" data-placement="top" title="Close"><span class="material-symbols-outlined">
+                                        close
+                                        </span></button>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +123,12 @@
                                     <p><span class="below">id: {{ item.id }}</span> </p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                    <a href="{% url 'inventory-item' item.id %}?formID=stocks" data-toggle="tooltip" title="Edit"><span class="material-symbols-outlined">
+                                        edit
+                                        </span></a>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-toggle="tooltip" data-placement="top" title="Close"><span class="material-symbols-outlined">
+                                        close
+                                        </span></button>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +182,12 @@
                                     <p><span class="below">id: {{ item.id }}</span> </p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                    <a href="{% url 'inventory-item' item.id %}?formID=stocks" data-toggle="tooltip" title="Edit"><span class="material-symbols-outlined">
+                                        edit
+                                        </span></a>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-toggle="tooltip" data-placement="top" title="Close"><span class="material-symbols-outlined">
+                                        close
+                                        </span></button>
                                 </div>
                             </div>
                         </div>
