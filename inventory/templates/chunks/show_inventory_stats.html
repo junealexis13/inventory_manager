@@ -1,7 +1,7 @@
 <div class="item_wrapper">
-    <h1>Number of Items by Category</h1>
+    <h1 class="item_stat_header">Number of Items by Category</h1>
     {% for cat, count in item_count.items %}
-    <div class="header_wrapper">
+    <div class="header_wrapper bg_item_stats">
         <h1>{{ cat }}</h1>
         <p>{{ count }}</p>
     </div>

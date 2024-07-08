@@ -22,7 +22,8 @@ def inventory_dashboard(request):
         str_x = str(x.product.category)
         itemCount_categorized[str_x] += 1
         
-    var['item_count'] = itemCount_categorized
+    var['item_count'] = dict(sorted(itemCount_categorized.items(), key=lambda item: item[1], reverse=True))
+
     
     return render(request, 'blocks/dashboard_components.html',var)  
 
@@ -50,5 +51,5 @@ def show_stock_data(request, item_id):
     var['submitted'] = submitted   
     var['item'] = item
     
-    print(var)
+
     return render(request, 'blocks/view_item_forms.html', var)

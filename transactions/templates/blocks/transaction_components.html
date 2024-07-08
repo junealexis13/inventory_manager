@@ -1,9 +1,4 @@
-{% extends "inventory/inventory_dashboard_home.html"%}
-
-{% block navbar %}
-{% include "chunks/navbar.html" %}
-{% endblock %}
-
+{% extends "transactions/transactions_dashboard_home.html"%}
 
 {% block db_body %}
     <div class="dashboard_body">
@@ -12,28 +7,26 @@
                 <!-- <li><h1>Sidebar</h1></li> -->
                 <li data-tab-target="tabs-stats">
                     <div id="sb-stats" class="icon_container">
-                    <p><span class="material-symbols-outlined">inventory_2</span></p>
-                    <label>Items</label>
+                    <p><span class="material-symbols-outlined">point_of_sale</span></p>
+                    <label>Transact</label>
                     </div>
                  </li>
 
                 <li data-tab-target="tabs-item">
                     <div id="sb-items" class="icon_container">
                         <p><span class="material-symbols-outlined">
-                            library_books
+                            contract
                             </span></p>
-                        <label>Stats</label>
+                        <label>Transaction Logs</label>
                     </div>
                 </li>
             </ul>
 
-
             <div class="lower_tab_items">
-                <p>Inventory</p>
+                <p>Transactions</p>
                 <hr style="color: white; box-shadow: -2px 1px 5px white;">
-                <a href="{% url 'transactions-dashboard' %}">Transactions</a>
+                <a href="{% url 'inventory-dashboard' %}">Inventory</a>
                 <hr style="color: white; box-shadow: -2px 1px 5px white;">
-            
                 <a href="{% url 'mngr-home' %}">Home</a>
                 <a href="{% url 'mngr-products' %}">Category</a>
                 <a href="#">Contacts</a>
@@ -43,12 +36,12 @@
         <div class="dashboard_ui">
             <div id="tabs-stats" data-tab-content class="active">
                 <div class="tabs_view_wrapper">
-                    {% include "chunks/enumerate_inventory.html" %}
+                    {% include "chunks/transaction_transact.html" %}
                 </div>
             </div>
 
             <div id="tabs-item" data-tab-content>
-                {% include "chunks/show_inventory_stats.html" %}
+                {% include "chunks/transaction_logs.html" %}
             </div>
         </div>
     </div>

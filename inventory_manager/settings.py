@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "home",
     "inventory",
+    "transactions",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -120,7 +121,8 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'home', 'static'),
-    os.path.join(BASE_DIR, 'inventory', 'static')
+    os.path.join(BASE_DIR, 'inventory', 'static'),
+    os.path.join(BASE_DIR, 'transactions', 'static')
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
