@@ -50,6 +50,36 @@ def show_stock_data(request, item_id):
     var['form'] = form
     var['submitted'] = submitted   
     var['item'] = item
-    
 
-    return render(request, 'blocks/view_item_forms.html', var)
+    return render(request, 'blocks/view_item_forms.html',var) 
+    
+def multi_remove_stocks(request):
+    # pr_number = models.Product.objects.count()
+    # cat_number = models.Category.objects.count()
+    # sup_number = models.Supplier.objects.count()
+
+    # if pr_number == 0 and cat_number == 0 and sup_number == 0:
+    #     form_isEmpty= True 
+    # else:
+    #     form_isEmpty = False 
+
+
+    if request.method == 'POST':
+        form = forms.DeleteStockForm(request.POST)
+        if form.is_valid():
+            available_ids = form.cleaned_data['available_ids']
+            not_available_ids = form.cleaned_data['not_available_ids']
+            phased_out_ids = form.cleaned_data['phased_out_ids']
+
+            Stock.objects.filter(id__in=available_ids).delete()
+            Stock.objects.filter(id__in=not_available_ids).delete()
+            Stock.objects.filter(id__in=phased_out_ids).delete()
+            messages.success(request,"Successfully Removed Items")
+            return HttpResponseRedirect('/inventory/dashboard')
+        else:
+            return HttpResponseRedirect('/inventory/manage/remove')
+    else:
+        form = forms.DeleteStockForm()
+
+
+    return render(request, 'blocks/remove_stock_entries.html', {'form': form})

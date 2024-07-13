@@ -30,6 +30,7 @@ urlpatterns = [
     path('edit_product/<int:pk>/', views.edit_product_specs, name='edit_product'),
     path('manage_entries', views.manage_entries, name='entry-mngr'),
     path('inventory/dashboard', ivw.inventory_dashboard, name='inventory-dashboard'),
-    path('inventory/show_info/<item_id>', ivw.show_stock_data, name='inventory-item'),
-    path('transactions/dashboard', tvw.transactions_dashboard, name='transactions-dashboard')
+    path('inventory/manage/edit/<item_id>', ivw.show_stock_data, name='inventory-item'),
+    path('inventory/manage/remove',ivw.multi_remove_stocks, name='remove-stock-items'),
+    path('transactions/dashboard', tvw.transactions_dashboard, name='transactions-dashboard'),
 ]

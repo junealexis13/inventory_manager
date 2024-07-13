@@ -314,6 +314,7 @@ button {
 
 .message_alert {
     display: block;
+    background-color: aquamarine;
     align-items: center;
     text-align: center;
     font-family: var(--global-font-style-navbar-section-title);
