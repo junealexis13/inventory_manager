@@ -6,6 +6,8 @@
 
 
 {% block list_products %}
+    {% include "chunks/products_tools.html" %}
+
     {% if product_number == 0 %}
         {% include "chunks/products_noneview.html" %}
         {% include "chunks/products_tools.html" %}
@@ -63,9 +65,6 @@
             {% endfor %}
              
             </div>
-
-        <p style="font-weight: bold;">Tools</p>
-        {% include "chunks/products_tools.html" %}
 
     {% endif %}
 {% endblock %}

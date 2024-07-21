@@ -46,13 +46,12 @@
     height: 10rem;
     border-radius: 25px;
     border: none;
-    transition: all 0.5s;
+    transition: all 0.35s cubic-bezier(0.215, 0.610, 0.355, 1);
     padding:1rem 0;
 }
 
 .box_wrapper:hover{
-    background-color: rgb(199, 199, 199);
-    border: 0.25rem solid black;
+    background-color: rgb(150, 148, 148);
 }
 
 .box_wrapper > img {
