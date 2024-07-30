@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* Global Variables */
+:root {
+    --global-font-style-navbar-menu: "Roboto Mono";
+    --global-font-style-navbar-title: "DM Serif Display";
+    --global-font-style-navbar-section-title: "Outfit";
+  }
+
+.tx_header {
+    display: flex;
+    width: 100%;
+    height: calc(100dvh - 80dvh);
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: rgb(148, 148, 148);
+
+}
+
+.tx_header > div {
+  margin: 20px 20px;
+  background-color: rgb(165, 165, 165);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed black;
+  border-radius: 20px;
+}
+
+.tx_header > div > * {
+  margin: 0 20px;
+
+}
+
+
+@media screen and (max-width:996px) {
+
+}

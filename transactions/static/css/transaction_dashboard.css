@@ -187,12 +187,13 @@ ul > li {
 /* UI */
 
 .dashboard_ui {
-    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
     overflow: auto;
-}
+    height: 100dvh;
+    width: 100%;
 
-.dashboard_ui > div {
-    height: 80dvh;
 }
 
 .inventory_container {

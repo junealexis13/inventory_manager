@@ -187,7 +187,7 @@ ul > li {
 /* UI */
 
 .dashboard_ui {
-    margin: 10px;
+    margin: 0;
     overflow: auto;
 }
 
@@ -251,12 +251,14 @@ ul > li {
     flex-direction: column;
     justify-content: flex-start;
     align-items: left;
+    margin: 0;
 }
 
 .item_wrapper {
     display: flex;
     flex-direction: column;
     align-items: left;
+    margin: 0;
 }
 
 .header_wrapper {
