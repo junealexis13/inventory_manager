@@ -1,12 +1,9 @@
 <div class="transaction_db">
-    <h2>Create New Transaction</h2>
-    <form method="post">
+  <h2>Sell</h2>
+  <form method="post" id="transactionForm">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit">Create</button>
-    </form>
-    
-    {% if form.instance.TOTAL_PRICE %}
-      <p>Total Price: {{ form.instance.TOTAL_PRICE }}</p>
-    {% endif %}
+      <p id="price_placeholder">Total Price: ₱ <span id="totalPrice">0</span></p>
+      <button type="submit" class="btn btn-primary">Success</button>
+  </form>
 </div>

@@ -59,17 +59,18 @@ body {
 .lower_tab_items > a {
     text-decoration: none;
     font-family: var(--global-font-style-navbar-menu);
+    font-size: clamp(0.5rem, 2.5vw, 1rem) ;
     color: rgb(234, 234, 234);
     margin: 2px 0;
 }
 
 .lower_tab_items > p {
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: clamp(0.5rem, 2.5vw, 1rem) ;
     font-family: var(--global-font-style-navbar-title);
     font-weight: 900;
     color: rgb(234, 234, 234);
-    margin: 0;
+    margin: 2px 0;
 }
 
 .icon_container {
@@ -106,9 +107,9 @@ body {
 }
 
 .icon_container > label {
-    font-size: clamp(0.5rem, 1rem, 1.3rem);
+    font-size: clamp(0.5rem, 3.5vw, 1.1rem);
     color: white;
-    margin:0.5rem;
+    margin: 0.5rem;
     text-align: center;
 }
 

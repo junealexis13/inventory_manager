@@ -30,7 +30,34 @@
       <script src="{% static 'js/navbar.js' %}"></script>
       <script src="{% static 'js/tab_manager.js' %}"></script>
       <script src="{% static 'js/timer.js' %}"></script>
-      
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stockItemsField = document.querySelector('#id_stock_items');
+            const totalPriceElement = document.querySelector('#totalPrice');
+        
+            async function updateTotalPrice() {
+                const formData = new FormData(document.querySelector('#transactionForm'));
+                try {
+                    const response = await fetch("{% url 'get_total_price' %}", {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                        }
+                    });
+                    const data = await response.json();
+                    totalPriceElement.textContent = data.total_price;
+                } catch (error) {
+                    console.error('Error fetching total price:', error);
+                }
+            }
+        
+            stockItemsField.addEventListener('change', updateTotalPrice);
+        });
+        </script>
+        
+
     </header>
   </body>
 </html>

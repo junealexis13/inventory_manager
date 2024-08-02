@@ -12,12 +12,19 @@
     width: 100%;
     height: calc(100dvh - 80dvh);
     flex-direction: row;
+    align-items: center;
     justify-content: flex-start;
     background-color: rgb(148, 148, 148);
+    padding: 2rem;
 
 }
-
+.tx_header > * {
+  font-family: var(--global-font-style-navbar-section-title);
+  font-weight: bolder;
+  font-size: 4rem;
+}
 .tx_header > div {
+  height: 5rem;
   margin: 20px 20px;
   background-color: rgb(165, 165, 165);
   display: flex;
@@ -31,8 +38,54 @@
 .tx_header > div > * {
   margin: 0 20px;
 
+
 }
 
+/* Transaction DB styles */
+
+.transaction_db {
+  margin: 2rem;
+  padding: 1rem;
+  background-color: rgba(194, 194, 194, 0.363);
+  border-radius: 5px;
+}
+
+/* Forms Styles */
+
+form > p > label, input, select {
+  font-family: var(--global-font-style-navbar-menu);
+}
+
+select {
+  height: 20dvh;
+}
+
+
+.transaction_db > h2 {
+  font-family: var(--global-font-style-navbar-section-title);
+  font-weight: bolder;
+
+}
+
+form > p > label {
+  font-weight: 500;
+}
+
+
+button {
+  font-size: 1rem;
+}
+
+#price_placeholder {
+  font-family: var(--global-font-style-navbar-section-title);
+  font-size: 1.5rem;
+}
+
+#price_placeholder > #totalPrice {
+  font-weight: bolder;
+  color: rgb(0, 0, 0);
+  font-size: 1.5rem;
+}
 
 @media screen and (max-width:996px) {
 

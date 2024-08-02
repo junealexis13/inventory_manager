@@ -14,7 +14,12 @@ class SellItem(models.Model):
     stock_items = models.ManyToManyField(Stock, related_name='items_to_sell', null=True)
     date_transaction = models.DateField(default=timezone.now, editable=True)
     sold_to = models.CharField(max_length=255, blank=True, null=True)
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
     @property
     def TOTAL_PRICE(self):
         return self.stock_items.aggregate(total=Sum('product__selling_price'))['total'] or 0
+
+    def save(self, *args, **kwargs):
+        self.total_price = self.stock_items.aggregate(total=Sum('product__selling_price'))['total'] or 0
+        super().save(*args, **kwargs)
