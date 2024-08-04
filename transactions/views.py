@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 from transactions.forms import SellItemForm
 from django.http import JsonResponse
 from django.db.models import Sum
@@ -13,6 +15,11 @@ def get_total_price(request):
     ids = request.POST.getlist('stock_items')
     total_price = Stock.objects.filter(id__in=ids).aggregate(total=Sum('product__selling_price'))['total'] or 0
     return JsonResponse({'total_price': total_price})
+
+@receiver(post_save, sender=SellItem)
+def update_stock_is_sold(sender, instance, **kwargs):
+    #update is_sold status for all related/ selected items stock items
+    instance.stock_items.update(is_sold=True)
 
 def transactions_dashboard(request):
     total_price = 0
