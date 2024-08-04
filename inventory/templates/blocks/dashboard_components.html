@@ -8,6 +8,7 @@
 {% block db_body %}
     <div class="dashboard_body">
         <div class="dashboard_sidebar">
+            
             <ul>
                 <!-- <li><h1>Sidebar</h1></li> -->
                 <li data-tab-target="tabs-stats">
@@ -50,6 +51,14 @@
             </div>
         </div>
         <div class="dashboard_ui">
+            <div class="tx_header">
+                <h1>Inventory</h1>
+                <div>
+                    <span class="material-symbols-outlined">
+                        inventory
+                    </span>
+                </div>
+            </div>
             <div id="tabs-stats" data-tab-content class="active">
                 <div class="tabs_view_wrapper">
                     {% include "chunks/enumerate_inventory.html" %}

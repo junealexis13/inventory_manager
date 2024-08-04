@@ -335,6 +335,43 @@ button {
 .item_stat_header {
     font-size: 1.5rem;
 }
+
+/* For Inv Header */
+
+
+.tx_header {
+    display: flex;
+    width: 100%;
+    height: calc(100dvh - 80dvh);
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgb(211, 211, 211);
+    padding: 2rem;
+
+}
+.tx_header > * {
+  font-family: var(--global-font-style-navbar-section-title);
+  font-weight: bolder;
+  font-size: 4rem;
+}
+.tx_header > div {
+  height: 5rem;
+  margin: 20px 20px;
+  background-color: rgb(211, 211, 211);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed black;
+  border-radius: 20px;
+}
+
+.tx_header > div > * {
+  margin: 0 20px;
+
+
+}
 @media screen and (max-width:996px) {
 
 
