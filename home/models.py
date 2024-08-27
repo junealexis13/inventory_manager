@@ -53,6 +53,7 @@ class Stock(models.Model):
     status = models.CharField(max_length=50, choices=[('available', 'Available'), ('not_available','Not Available'), ('phased_out', 'Phased Out')])
     expiry_date = models.DateField(null=True, blank=True, help_text="YYYY-MM-DD (Expiry defaults with product category expiry)")
     is_sold = models.BooleanField(default=False)
+    sold_date = models.DateField(null=True, blank=True, default=None)
     
     def __str__(self):
         try:

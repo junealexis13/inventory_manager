@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.dispatch import receiver
 from django.db.models.signals import post_save
@@ -8,7 +7,6 @@ from django.db.models import Sum
 from django.views.decorators.http import require_POST
 from home.models import Stock
 from transactions.models import SellItem
-# Create your views here.
 
 @require_POST
 def get_total_price(request):
