@@ -43,7 +43,11 @@
             </div>
 
             <div id="tabs-item" data-tab-content>
-                {% include "chunks/transaction_logs.html" %}
+                {% include "chunks/transaction_log_header.html" %}
+                <div class="tabs_view_wrapper">
+                    {% include "chunks/transaction_logs.html" %}
+                </div>
+
             </div>
         </div>
     </div>
