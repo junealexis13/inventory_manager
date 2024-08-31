@@ -13,11 +13,11 @@ def generate_transaction_id():
 class SellItem(models.Model):
     id = models.CharField(max_length=8, primary_key=True, unique=True, default=generate_transaction_id, editable=False)
     stock_items = models.ManyToManyField(Stock, related_name='items_to_sell', blank=True)
-    date_transaction = models.DateField(default=timezone.now, editable=True)
+    date_transaction = models.DateTimeField(default=timezone.now, editable=True)
     sold_to = models.CharField(max_length=255, blank=True, null=True)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
-    @property
+    @property   
     def TOTAL_PRICE(self):
         return self.stock_items.aggregate(total=Sum('product__selling_price'))['total'] or 0
 

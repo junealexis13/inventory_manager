@@ -11,3 +11,8 @@ tabs.forEach(tab => {
     }
   });
 });
+
+
+function goBack() {
+  window.history.back();
+};

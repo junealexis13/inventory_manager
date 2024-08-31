@@ -10,7 +10,7 @@ class SellItemForm(forms.ModelForm):
         fields = ['sold_to', 'date_transaction', 'stock_items']
         widgets = {
             'sold_to': forms.TextInput(attrs={'class': 'form-control'}),
-            'date_transaction': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'date_transaction': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'}),
             'stock_items': forms.SelectMultiple(attrs={'class': 'form-control select2-multiple'}),
         }
 

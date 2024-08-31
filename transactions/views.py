@@ -21,12 +21,15 @@ def update_stock_is_sold(sender, instance, **kwargs):
 
 def transactions_dashboard(request):
     total_price = 0
+    transactions = SellItem.objects.all()
     if request.method == 'POST':
         form = SellItemForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,"Transaction Records updated!")
+            return HttpResponseRedirect('/transactions/dashboard?success=True')
     else:
         form = SellItemForm()
 
     return render(request, 'blocks/transaction_components.html',
-        {'form': form, 'total_price': total_price})
+        {'form': form, 'total_price': total_price, 'transactions': transactions})

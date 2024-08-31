@@ -87,6 +87,14 @@ button {
   font-size: 1.5rem;
 }
 
+/* Logs */
+.tx_log_wrapper {
+  margin: 2rem;
+}
+
+td, th {
+  padding: 0 10px;
+}
 @media screen and (max-width:996px) {
 
 }
