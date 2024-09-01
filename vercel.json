@@ -1,12 +1,12 @@
 {
     "builds": [{
         "src" : "inventory_manager/wsgi.py",
-        "use" : "@vercel/python".
+        "use" : "@ardnt/vercel-python-wsgi",
         "config" : { "maxLambdaSize": "15mb", "runtime": "python3.12"}
     }],
     "routes": [
         {
-            "src"   : "/(.*)",
+            "src": "/(.*)",
             "dest"  : "inventory_manager/wsgi.py"
         }
     ]
