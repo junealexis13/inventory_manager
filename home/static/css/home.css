@@ -11,3 +11,20 @@ body {
     width: 100dvw;
     height: auto;
 }
+
+.system-messages {
+    position: absolute;
+    bottom: 0;
+    width: 30dvw;
+    margin: 2rem 2rem 0 2rem;
+}
+
+@media screen and (max-width:996px) {
+
+.system-messages {
+    position: relative;
+    width: 80dvw;
+}
+
+
+}

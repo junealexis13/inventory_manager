@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from home import views
 from inventory import views as ivw
 from transactions import views as tvw
@@ -34,4 +34,6 @@ urlpatterns = [
     path('inventory/manage/remove',ivw.multi_remove_stocks, name='remove-stock-items'),
     path('transactions/dashboard', tvw.transactions_dashboard, name='transactions-dashboard'),
     path('get_total_price/', tvw.get_total_price, name='get_total_price'),
+    path('authenticate/', include('django.contrib.auth.urls')),
+    path('authenticate/', include('auth_app.urls')),
 ]

@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* Global Variables */
+:root {
+    --global-font-style-navbar-menu: "Roboto Mono";
+    --global-font-style-navbar-title: "DM Serif Display";
+    --global-font-style-navbar-section-title: "Outfit";
+  }
+
+body {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login_wrap {
+    margin: 2rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(215, 210, 210, 0.344);
+    border-radius: 10px;
+}
+
+.header_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header_wrap > h1 {
+    font-family: var(--global-font-style-navbar-title);
+    padding: 2rem 1rem 0 1rem;
+}
+.header_wrap > p {
+    font-family: var(--global-font-style-navbar-title);
+    padding: 0;
+}
+
+
+#loginForm {
+    margin: 1rem;
+
+}
+
+.mb-3 > label {
+    font-family: var(--global-font-style-navbar-title);
+}
+
+.mb-3 > input {
+    width: 30dvw;
+    background-color: rgba(249, 249, 249, 0.385);
+    
+}
+
+.btn {
+    font-family: var(--global-font-style-navbar-section-title);
+    background-color: rgba(0, 255, 255, 0.289);
+    border-color: transparent;
+}
+
+
+
+@media screen and (max-width:996px) {
+
+    .mb-3 > input {
+        width: 60dvw;
+        
+    } 
+
+}
