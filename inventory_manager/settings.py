@@ -125,12 +125,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'transactions', 'static'),
     os.path.join(BASE_DIR, 'auth_app', 'static')
 ]
-STATIC_ROOT = [
-    os.path.join(BASE_DIR, 'home', 'static'),
-    os.path.join(BASE_DIR, 'inventory', 'static'),
-    os.path.join(BASE_DIR, 'transactions', 'static'),
-    os.path.join(BASE_DIR, 'auth_app', 'static')
-]
 
 
 # Default primary key field type
