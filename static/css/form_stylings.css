@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* Global Variables */
+:root {
+    --global-font-style-navbar-menu: "Roboto Mono";
+    --global-font-style-navbar-title: "DM Serif Display";
+    --global-font-style-navbar-section-title: "Outfit";
+  }
+
+.form_style {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60dvw;
+    margin: 2.5rem;
+    border-radius: 1dvw;
+    background-color: rgb(241, 241, 241);
+}
+
+.form_style > p > label {
+    font-family: var(--global-font-style-navbar-menu);
+    font-size: clamp(.4rem, .5rem + 1dvw, 1rem);
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.form_style > p > select {
+    margin: 5px;
+    width: 40dvw;
+}
+
+
+.form_style > p > input {
+    margin: 5px;
+    width: 40dvw;
+}
+
+.form_style > p > span {
+    font-family: var(--global-font-style-navbar-menu);
+    font-size: clamp(.3rem, .4rem + 1dvw, .7rem);
+    margin: 0;
+}
+
+center > form > p {
+    font-family: var(--global-font-style-navbar-menu);
+}
+center > h1 {
+    font-family: var(--global-font-style-navbar-section-title);
+    margin: clamp(0.7rem, 0.7rem + 0.5dvw, 1rem);
+}
+
+center > form {
+    margin: 5rem;
+}
+
+
+.submitted {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.submitted > h1 {
+    text-align: center;
+    font-family: var(--global-font-style-navbar-section-title);
+    margin: 2rem;
+}
+
+.submitted > a {
+    text-decoration: none;
+    font-family: var(--global-font-style-navbar-menu);
+    color: black;
+    font-weight: bold;
+    
+}
+
+/* Remove Items */
+.remove_entry_wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem;
+  }
+
+.item_wrapper {
+    display: block
+}
+
+#deleteForm {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+    margin: 2rem 5rem;
+}
+
+.item_container {
+    border: 5px solid brown;
+    border-radius: 32px;
+    padding: 1rem;
+  }
+
+#id_products > div > label , #id_category > div > label, #id_supplier > div > label  {
+    font-family: var(--global-font-style-navbar-menu);
+    font-size: large;
+}
+
+.item_container  p > label {
+    font-family: var(--global-font-style-navbar-section-title);
+    font-size: x-large;
+}
+
+ul.errorlist {
+    display: none;
+}
+
+
+button {
+    display: block;
+}
+button > p {
+    font-family: var(--global-font-style-navbar-menu);
+    margin: 0 2rem;
+}
+
+
+@media screen and (max-widtht:996) {
+    
+}

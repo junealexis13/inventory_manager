@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-q(*i#5fvs%!99)=az!a#d2oj=dgyayg)@dgln8e+cjq%@+(o(2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['junealexis13.pythonanywhere.com']
 
 
 # Application definition
@@ -126,6 +126,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'auth_app', 'static')
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+:root {
+  --global-font-style-navbar-menu: "Roboto Mono";
+  --global-font-style-navbar-title: "DM Serif Display";
+  --global-font-style-navbar-section-title: "Outfit";
+}
+
+.navbar {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  background-color: #24252A;
+  font-family: var(--global-font-style-navbar-menu);
+}
+
+.navbar li,
+.navbar a,
+.navbar button.cta-bt {
+  font-family: var(--global-font-style-navbar-menu);
+  font-weight: 500;
+  font-size: 16px;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+.navbar > h1 {
+  font-family: var(--global-font-style-navbar-section-title);
+  font-weight: 300;
+  color: #edf0f1;
+
+}
+
+.navbar h1 > span {
+  font-family: var(--global-font-style-navbar-title);
+  font-weight: 500;
+  font-size: clamp(1rem, 1.5rem + 2dvw, 5rem);
+}
+
+.nav_links {
+  list-style: none;
+}
+
+.nav_links li {
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.nav_links li:nth-child(3) a {
+  color: #f08888; /* Red color for the anchor tag within the third list item */
+}
+
+.nav_links li a {
+  transition: all 0.35s ease 0s;
+}
+
+button.cta-bt {
+  padding: 9px 25px;
+  background-color: rgb(170, 170, 170);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+button.cta-bt:hover {
+  background-color: rgba(0, 136, 169, 0.5);
+}
+
+.toggle_menu > button {
+  padding: 9px 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25%;
+  background-color: #24252a00;
+  color: #edf0f1;
+  transition: all 0.25s;
+}
+
+
+.toggle_menu > p {
+  padding: 0;
+  font-family: var(--global-font-style-navbar-menu);
+  font-size: 1rem;
+  color: white;
+  align-items: center;
+  text-align: right;
+}
+.toggle_menu > button > span {
+  font-size: 2rem;
+}
+
+.toggle_menu > button:hover {
+  cursor: pointer;
+  scale: 150%;
+}
+
+.toggle_menu {
+  display: none;
+}
+.nav_links li a:hover {
+  color: #0088a9;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+}
+
+.menu_extend {
+  display: none;
+}
+
+
+@media screen and (max-width: 996px) {
+  nav,
+  .navbar li,
+  .navbar a,
+  .navbar .cta-bt {
+    display: none;
+  }
+
+  .toggle_menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .toggle_menu > p {
+    text-align: center;
+    margin: 0;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 3.5%;
+  }
+
+  .menu_extend {
+    display: none;
+  }
+
+  .menu_extend > ul {
+    list-style: none;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    top: 110px;
+    font-size: 1rem;
+    background-color: #24252A;
+    border-bottom-left-radius: 5%;
+
+  }
+
+  .menu_extend > ul > li > a{
+    display: block;
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 1rem;
+    color: rgb(255, 255, 255);
+    font-family: var(--global-font-style-navbar-menu);
+    border-radius: 5%;
+    transition: all 0.35s ease;
+  }
+
+  .menu_extend > ul > li > a:hover{
+    background-color: rgb(170, 170, 170);
+    font-weight: 500;
+
+
+  }
+
+    
+}
