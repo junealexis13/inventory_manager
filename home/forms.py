@@ -2,6 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import Category, Product, Stock, Supplier
 
+
 class CategoryForms(ModelForm):
     class Meta:
         model = Category
@@ -18,21 +19,37 @@ class ProductForms(ModelForm):
     class Meta:
         model = Product
         fields = "__all__"
-
-    def __init__(self, *args, **kwargs):
-        super(ProductForms, self).__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs.update({'class': 'form-control','cols':'60'})
+        widgets = {
+                    'product_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter product name'}),
+                    'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Describe the product'}),
+                    'SKU': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter SKU'}),
+                    'category': forms.Select(attrs={'class': 'form-control'}),
+                    'weight': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter weight in kg'}),
+                    'image': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
+                    'expiry_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+                    'notes': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Additional notes (optional)'}),
+                    'cost_price': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter cost price'}),
+                    'selling_price': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter selling price'}),
+                    'discount': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter discount'}),
+                }
 
 class StockForms(ModelForm):
     class Meta:
         model = Stock
-        fields = "__all__"
+        exclude = ['is_sold']
 
-    def __init__(self, *args, **kwargs):
-        super(StockForms, self).__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs.update({'class': 'form-control','cols':'60'})
+        widgets = {
+            'stock_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter stock name'}),
+            'product': forms.Select(attrs={'class': 'form-control'}),
+            'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter location'}),
+            'supplier': forms.Select(attrs={'class': 'form-control'}),
+            'date_received': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'}),
+            'date_last_ordered': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'placeholder': 'Optional'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
+            'expiry_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'placeholder': 'Optional'}),
+            'sold_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'placeholder': 'Optional'}),
+        }
+
 
 class SupplierForms(ModelForm):
     class Meta:

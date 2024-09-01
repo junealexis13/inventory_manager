@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.dispatch import receiver
+from django.contrib import messages
 from django.db.models.signals import post_save
 from transactions.forms import SellItemForm
 from django.http import JsonResponse
@@ -27,7 +28,7 @@ def transactions_dashboard(request):
         if form.is_valid():
             form.save()
             messages.success(request,"Transaction Records updated!")
-            return HttpResponseRedirect('/transactions/dashboard?success=True')
+            return redirect('/transactions/dashboard?success=True')
     else:
         form = SellItemForm()
 

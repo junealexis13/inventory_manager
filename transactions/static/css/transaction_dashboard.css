@@ -249,7 +249,7 @@ ul > li {
 }
 
 .tabs_view_wrapper {
-    display: block;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: left;

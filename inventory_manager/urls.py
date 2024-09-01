@@ -15,6 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import path, include
 from home import views
 from inventory import views as ivw
@@ -22,8 +23,9 @@ from transactions import views as tvw
 
 
 urlpatterns = [
+    path('', lambda request: redirect('login')),
     path('admin/', admin.site.urls, name="admin"),
-    path('', views.landing_page, name="mngr-home"),
+    path('home', views.landing_page, name="mngr-home"),
     path('products/', views.add_product, name="mngr-products"),
     path('inventory_forms/', views.product_forms, name="mngr-forms"),
     path('login/', views.login_page, name="mngr-login"),

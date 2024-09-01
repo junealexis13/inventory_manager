@@ -249,7 +249,7 @@ ul > li {
 }
 
 .tabs_view_wrapper {
-    display: block;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: left;
@@ -330,7 +330,7 @@ button {
 .bg_item_stats {
     background-color: #cdcdcd;
     border: 1px dashed black;
-    width: 80dvw;
+    width: 50%;
     margin: 0.5rem 3rem;
     border-radius: 2rem;
 }
@@ -373,8 +373,18 @@ button {
 
 .tx_header > div > * {
   margin: 0 20px;
+}
 
+/* Modifiers */
 
+.horizontal {
+    flex-direction: row;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 @media screen and (max-width:996px) {
 

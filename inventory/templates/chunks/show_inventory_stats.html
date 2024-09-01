@@ -7,3 +7,24 @@
     </div>
     {% endfor %}
 </div>
+
+<div class="item_wrapper horizontal">
+
+
+    <div class="col sold_col">
+        <h1 class="item_stat_header">Sold Items</h1>
+        <div class="header_wrapper bg_item_stats">
+            <h1>{{ sold_count }}</h1>
+        </div>
+    </div>
+
+    <div class="col unsold_col">
+        <h1 class="item_stat_header">Unsold Items</h1>
+
+        <div class="header_wrapper bg_item_stats">
+            <h1>{{ not_sold_count }}</h1>
+        </div>
+
+    </div>
+
+</div>

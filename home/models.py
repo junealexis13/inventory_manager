@@ -48,7 +48,7 @@ class Stock(models.Model):
     product = models.ForeignKey(Product, related_name="stocks", on_delete=models.SET_NULL, null=True)
     location = models.CharField(max_length=255)
     supplier = models.ForeignKey(Supplier, on_delete=models.SET_NULL, null=True)
-    date_received = models.DateField(default=timezone.now, editable=True,help_text="YYYY-MM-DD")
+    date_received = models.DateTimeField(default=timezone.now, editable=True, help_text="YYYY-MM-DD: HH-MM")
     date_last_ordered = models.DateField(null=True, blank=True, help_text="YYYY-MM-DD")
     status = models.CharField(max_length=50, choices=[('available', 'Available'), ('not_available','Not Available'), ('phased_out', 'Phased Out')])
     expiry_date = models.DateField(null=True, blank=True, help_text="YYYY-MM-DD (Expiry defaults with product category expiry)")

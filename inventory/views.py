@@ -12,6 +12,12 @@ def inventory_dashboard(request):
     var['inventory'] = Stock.objects.all()
     var['inventory_count'] = Stock.objects.count()
 
+    var['not_sold'] = Stock.objects.filter(is_sold=False)
+    var['sold'] = Stock.objects.filter(is_sold=True)
+    var['not_sold_count'] = Stock.objects.filter(is_sold=False).count()
+    var['sold_count'] = Stock.objects.filter(is_sold=True).count()
+
+
     itemCount_categorized = {}
     formID = request.GET.get('success', 'default')
 
@@ -26,7 +32,6 @@ def inventory_dashboard(request):
 
     
     return render(request, 'blocks/dashboard_components.html',var)  
-
 
 def show_stock_data(request, item_id):
     var = {}
