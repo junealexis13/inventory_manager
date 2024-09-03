@@ -9,6 +9,11 @@ from django.views.decorators.http import require_POST
 from home.models import Stock
 from transactions.models import SellItem
 
+from plotly.offline import plot
+import plotly.express as px
+import pandas as pd 
+
+
 @require_POST
 def get_total_price(request):
     ids = request.POST.getlist('stock_items')
@@ -23,6 +28,22 @@ def update_stock_is_sold(sender, instance, **kwargs):
 def transactions_dashboard(request):
     total_price = 0
     transactions = SellItem.objects.all()
+    tx_count = transactions.count()
+
+    if tx_count != 0:
+        sellitem_data = [
+            {
+                'price': x.total_price,
+                'date_transaction': x.date_transaction
+            } for x in transactions
+        ]
+
+        df = pd.DataFrame(sellitem_data)
+        fig = px.bar(df, x='date_transaction', y='price')
+        sold_data = plot(fig, output_type="div")
+    else:
+        sold_data = None
+
     if request.method == 'POST':
         form = SellItemForm(request.POST)
         if form.is_valid():
@@ -33,4 +54,5 @@ def transactions_dashboard(request):
         form = SellItemForm()
 
     return render(request, 'blocks/transaction_components.html',
-        {'form': form, 'total_price': total_price, 'transactions': transactions})
+        {'form': form, 'total_price': total_price, 'transactions': transactions, 
+        'transaction_count': tx_count, "plotly_sold_data": sold_data})

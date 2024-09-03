@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-q(*i#5fvs%!99)=az!a#d2oj=dgyayg)@dgln8e+cjq%@+(o(2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['junealexis13.pythonanywhere.com']
+ALLOWED_HOSTS = ['junealexis13.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -73,6 +73,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "inventory_manager.wsgi.application"
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

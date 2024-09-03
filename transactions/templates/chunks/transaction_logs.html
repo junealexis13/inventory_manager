@@ -1,47 +1,51 @@
 <div class="tx_log_wrapper">
-    {% for tx in transactions %}
-    <div class="accordion accordion-flush" id="accordionFlush{{ tx.id }}">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="heading{{ tx.id }}">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ tx.id }}" aria-expanded="false" aria-controls="collapse{{ tx.id }}">
-                    <b>Transaction ID: {{ tx.id }}</b>
-                </button>
-            </h2>
-            <div id="collapse{{ tx.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ tx.id }}" data-bs-parent="#accordionFlush{{ tx.id }}">
-                <div class="accordion-body">
-                    <table>
-                        <tr>
-                            <th>Variable</th>
-                            <th>Info</th>
-                        </tr>
-                        <tr>
-                            <td>Customer Name</td>
-                            <td>{{ tx.sold_to }}</td>
-                        </tr>
-                        <tr>
-                            <td>Transaction Date</td>
-                            <td>{{ tx.date_transaction }}</td>
-                        </tr>
-                        <tr>
-                            <td><i>Items</i></td>
-                            <td>
-                                <ol>
-                                    {% for item in tx.stock_items.all %}
-                                        <li>{{ item }} <b>Php{{item.product.selling_price}}</b></li>
-                                    {% empty %}
-                                        <li>No items</li>
-                                    {% endfor %}
-                                </ol>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Total Price</td>
-                            <td><b>Php{{ tx.total_price }}</b></td>
-                        </tr>
-                    </table>
+    {% if transaction_count == 0 %}
+        <p>No transaction logs were found.</p>
+    {% else %}
+        {% for tx in transactions %}
+        <div class="accordion accordion-flush" id="accordionFlush{{ tx.id }}">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading{{ tx.id }}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ tx.id }}" aria-expanded="false" aria-controls="collapse{{ tx.id }}">
+                        <b>Transaction ID: {{ tx.id }}</b>
+                    </button>
+                </h2>
+                <div id="collapse{{ tx.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ tx.id }}" data-bs-parent="#accordionFlush{{ tx.id }}">
+                    <div class="accordion-body">
+                        <table>
+                            <tr>
+                                <th>Variable</th>
+                                <th>Info</th>
+                            </tr>
+                            <tr>
+                                <td>Customer Name</td>
+                                <td>{{ tx.sold_to }}</td>
+                            </tr>
+                            <tr>
+                                <td>Transaction Date</td>
+                                <td>{{ tx.date_transaction }}</td>
+                            </tr>
+                            <tr>
+                                <td><i>Items</i></td>
+                                <td>
+                                    <ol>
+                                        {% for item in tx.stock_items.all %}
+                                            <li>{{ item }} <b>Php{{item.product.selling_price}}</b></li>
+                                        {% empty %}
+                                            <li>No items</li>
+                                        {% endfor %}
+                                    </ol>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total Price</td>
+                                <td><b>Php{{ tx.total_price }}</b></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    {% endfor %}
+        {% endfor %}
+    {% endif %}
 </div>

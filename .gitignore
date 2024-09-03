@@ -1,6 +1,6 @@
 # Byte-compiled / optimized / DLL files
 *.py[cod]
-__pycache__/
+__pycache__
 *.so
 
 # Virtualenv
@@ -9,10 +9,6 @@ venv/
 ENV/
 .venv/
 .ENV/
-
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
 
 # macOS specific
 .DS_Store

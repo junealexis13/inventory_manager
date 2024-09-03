@@ -20,6 +20,15 @@
                         <label>Logs</label>
                     </div>
                 </li>
+
+                <li data-tab-target="tabs-logs">
+                    <div id="sb-items" class="icon_container">
+                        <p><span class="material-symbols-outlined">
+                            leaderboard
+                            </span></p>
+                        <label>Stats</label>
+                    </div>
+                </li>
             </ul>
 
             <div class="lower_tab_items">
@@ -49,6 +58,14 @@
                 {% include "chunks/transaction_log_header.html" %}
                 <div class="tabs_view_wrapper">
                     {% include "chunks/transaction_logs.html" %}
+                </div>
+
+            </div>
+
+            <div id="tabs-logs" data-tab-content>
+                {% include "chunks/transaction_stat_header.html" %}
+                <div class="tabs_view_wrapper">
+                    {% include "chunks/transaction_stat.html" %}
                 </div>
 
             </div>

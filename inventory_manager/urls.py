@@ -23,7 +23,7 @@ from transactions import views as tvw
 
 
 urlpatterns = [
-    path('', lambda request: redirect('login')),
+    path('', lambda request: redirect('mngr-home') if request.user.is_authenticated else redirect('login')),
     path('admin/', admin.site.urls, name="admin"),
     path('home', views.landing_page, name="mngr-home"),
     path('products/', views.add_product, name="mngr-products"),

@@ -16,7 +16,7 @@ class SellItemForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['stock_items'].queryset = Stock.objects.filter(status='available')
+        self.fields['stock_items'].queryset = Stock.objects.filter(status='available').filter(is_sold=False)
         self.fields['stock_items'].label_from_instance = self.stock_label
 
     def stock_label(self, obj):
