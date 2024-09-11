@@ -14,9 +14,11 @@ class SellItem(models.Model):
     id = models.CharField(max_length=8, primary_key=True, unique=True, default=generate_transaction_id, editable=False)
     stock_items = models.ManyToManyField(Stock, related_name='items_to_sell', blank=True)
     date_transaction = models.DateTimeField(default=timezone.now, editable=True)
-    sold_to = models.CharField(max_length=255, blank=True, null=True)
+    sold_to = models.CharField(max_length=255, default="Customer Name",blank=True, null=True)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-
+    total_margin = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    def __str__(self):
+        return f"{self.date_transaction}| {self.sold_to} | {self.id} "
     @property   
     def TOTAL_PRICE(self):
         return self.stock_items.aggregate(total=Sum('product__selling_price'))['total'] or 0
@@ -30,5 +32,7 @@ class SellItem(models.Model):
 def update_total_price(sender, instance, action, **kwargs):
     if action == 'post_add' or action == 'post_remove' or action == 'post_clear':
         total_price = instance.stock_items.aggregate(total=Sum('product__selling_price'))['total'] or 0
+        total_margin = instance.stock_items.aggregate(total=Sum('product__margin'))['total'] or 0
         instance.total_price = total_price
+        instance.total_margin = total_margin
         instance.save()

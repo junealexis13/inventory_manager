@@ -90,21 +90,32 @@ button {
 /* Logs */
 .tx_log_wrapper {
   margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+
+.stat_wrap {
+  margin: 2rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
-.tx_log_wrapper > div {
+.stat_wrap > div {
   border: 2px solid black;
   border-radius: 5px;
   margin: 5px;
 }
 
-
 td, th {
   padding: 0 10px;
 }
 @media screen and (max-width:996px) {
-
+  .stat_wrap {
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 

@@ -18,7 +18,7 @@ class CategoryForms(ModelForm):
 class ProductForms(ModelForm):
     class Meta:
         model = Product
-        fields = "__all__"
+        exclude = ['margin']
         widgets = {
                     'product_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter product name'}),
                     'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Describe the product'}),

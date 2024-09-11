@@ -1,5 +1,7 @@
 <div class="tx_log_wrapper">
-    {% if transaction_count == 0 %}
+    <h1>Revenue</h1>
+    <div class="stat_wrap">
+        {% if transaction_count == 0 %}
         <p>No transaction logs were found.</p>
     {% else %}
         {% autoescape off %}
@@ -14,4 +16,27 @@
             {{ plotly_sold_quarterly }}
         {% endautoescape %}
     {% endif %}
+    </div>
+</div>
+
+
+<div class="tx_log_wrapper">
+    <h1>Profit Margin</h1>
+    <div class="stat_wrap">
+        {% if transaction_count == 0 %}
+        <p>No transaction logs were found.</p>
+    {% else %}
+        {% autoescape off %}
+            {{ plotly_profit_all }}
+        {% endautoescape %}
+
+        {% autoescape off %}
+            {{ plotly_profit_daily }}
+        {% endautoescape %}
+
+        {% autoescape off %}
+            {{ plotly_profit_quarterly }}
+        {% endautoescape %}
+    {% endif %}
+    </div>
 </div>

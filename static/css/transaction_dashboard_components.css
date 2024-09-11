@@ -90,7 +90,16 @@ button {
 /* Logs */
 .tx_log_wrapper {
   margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
+
+.tx_log_wrapper > div {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 5px;
+}
+
 
 td, th {
   padding: 0 10px;
@@ -98,3 +107,4 @@ td, th {
 @media screen and (max-width:996px) {
 
 }
+
