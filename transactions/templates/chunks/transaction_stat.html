@@ -3,7 +3,15 @@
         <p>No transaction logs were found.</p>
     {% else %}
         {% autoescape off %}
-            {{ plotly_sold_data }}
+            {{ plotly_sold_all }}
+        {% endautoescape %}
+
+        {% autoescape off %}
+            {{ plotly_sold_daily }}
+        {% endautoescape %}
+
+        {% autoescape off %}
+            {{ plotly_sold_quarterly }}
         {% endautoescape %}
     {% endif %}
 </div>

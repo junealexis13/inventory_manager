@@ -1,0 +1,9 @@
+<div class="tx_log_wrapper">
+    {% if transaction_count == 0 %}
+        <p>No transaction logs were found.</p>
+    {% else %}
+        {% autoescape off %}
+            {{ plotly_sold_data }}
+        {% endautoescape %}
+    {% endif %}
+</div>
