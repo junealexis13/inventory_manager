@@ -36,7 +36,7 @@ class ProductForms(ModelForm):
 class StockForms(ModelForm):
     class Meta:
         model = Stock
-        exclude = ['is_sold']
+        exclude = ['is_sold','sold_date']
 
         widgets = {
             'stock_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter stock name'}),

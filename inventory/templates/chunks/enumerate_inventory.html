@@ -22,15 +22,17 @@
         </symbol>
     </svg>
 
-    {% for message in messages %}
-        <div class="alert alert-success d-flex alert-dismissible align-items-center fade show" role="alert">
-            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" style="width: 1.5em; height: 1.5em;">
-                <use xlink:href="#check-circle-fill"/>
-            </svg>
-            <strong>Note:</strong> {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {% endfor %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success d-flex alert-dismissible align-items-center fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" style="width: 1.5em; height: 1.5em;">
+                    <use xlink:href="#check-circle-fill"/>
+                </svg>
+                <strong>Note:</strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
 
 
     <div class="item_wrapper">
@@ -38,57 +40,56 @@
             <h1>Available Items</h1>
         </div>
         <div class="grid_wrap">
-        {% for item in inventory %}
-            {% if item.status == 'available' %}
-                <div class="inventory_container stock_available">
-                    <h1>{{ item.stock_name }}</h1> 
-                    <p class="below">Added: {{ item.date_received }}</p>
-                    <span class="below">id: {{ item.id }}</span> 
+        {% for item in for_sale %}
+            <div class="inventory_container stock_available">
+                <h1>{{ item.stock_name }}</h1> 
+                <p class="below">Added: {{ item.date_received }}</p>
+                <span class="below">id: {{ item.id }}</span> 
 
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-dark large-screen-button" data-bs-toggle="modal" data-bs-target="#{{ item.id }}">
-                        View Item
-                    </button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-dark large-screen-button" data-bs-toggle="modal" data-bs-target="#{{ item.id }}">
+                    View Item
+                </button>
 
-                    <button type="button" class="btn btn-dark small-screen-button" data-bs-toggle="modal" data-bs-target="#{{ item.id }}">
-                        <span class="material-symbols-outlined">
-                            pageview
-                        </span>
-                    </button>
+                <button type="button" class="btn btn-dark small-screen-button" data-bs-toggle="modal" data-bs-target="#{{ item.id }}">
+                    <span class="material-symbols-outlined">
+                        pageview
+                    </span>
+                </button>
 
-                    <!-- Modal View-->
-                    <div class="modal fade" id="{{ item.id }}" tabindex="-1" aria-labelledby="mod{{ item.id }}" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="{{ item.id }}">{{ item.stock_name }}</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p><span>Product Type:</span> {{ item.product }}</p>
-                                    <p><span>Product Category:</span> {{ item.product.category }}</p>
-                                    <p><span>Location:</span> {{ item.location }}</p>
-                                    <p><span>Supplier:</span> {{ item.supplier }}</p>
-                                    <hr>
-                                    <p><span>Date Added:</span> {{ item.date_received }}</p>
-                                    <p><span>Date Last Ordered:</span> {{ item.date_last_ordered }}</p>
-                                    <p><span>Expiry Date:</span> {{ item.expiry_date }}</p>
-                                    <hr>
-                                    <p><span class="below">id: {{ item.id }}</span> </p>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="{% url 'inventory-item' item.id %}?formID=stocks" data-toggle="tooltip" title="Edit"><span class="material-symbols-outlined">
-                                        edit
-                                        </span></a>
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-toggle="tooltip" data-placement="top" title="Close"><span class="material-symbols-outlined">
-                                        close
-                                        </span></button>
-                                </div>
+                <!-- Modal View-->
+                <div class="modal fade" id="{{ item.id }}" tabindex="-1" aria-labelledby="mod{{ item.id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="{{ item.id }}">{{ item.stock_name }}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><span>Product Type:</span> {{ item.product }}</p>
+                                <p><span>Product Category:</span> {{ item.product.category }}</p>
+                                <p><span>Location:</span> {{ item.location }}</p>
+                                <p><span>Supplier:</span> {{ item.supplier }}</p>
+                                <hr>
+                                <p><span>Date Added:</span> {{ item.date_received }}</p>
+                                <p><span>Date Last Ordered:</span> {{ item.date_last_ordered }}</p>
+                                <p><span>Expiry Date:</span> {{ item.expiry_date }}</p>
+                                <hr>
+                                <p><span class="below">id: {{ item.id }}</span> </p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{% url 'inventory-item' item.id %}?formID=stocks" data-toggle="tooltip" title="Edit"><span class="material-symbols-outlined">
+                                    edit
+                                    </span></a>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-toggle="tooltip" data-placement="top" title="Close"><span class="material-symbols-outlined">
+                                    close
+                                    </span></button>
                             </div>
                         </div>
                     </div>
                 </div>
-            {% endif %}
+            </div>
+
         {% endfor %}
         </div>
     </div>
@@ -98,7 +99,7 @@
             <h1>Unavailable Items</h1>
         </div>
         <div class="grid_wrap">
-        {% for item in inventory %}
+        {% for item in all %}
             {% if item.status == 'not_available' %}
                 <div class="inventory_container stock_not_available">
                     <h1>{{ item.stock_name }}</h1> 

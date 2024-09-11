@@ -21,7 +21,7 @@ class Product(models.Model):
     product_name = models.CharField(max_length=255,default="Product 1",help_text="Official product name")
     description = models.TextField(help_text="Tell something about the product.")
     SKU = models.CharField(max_length=50, unique=True, help_text="SKU is a unique ID given mainly by manufacturers. Check the Unit or Documents if SKU is present.")
-    category = models.OneToOneField(Category, related_name="products", on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Category, related_name="products", on_delete=models.SET_NULL, null=True)
     weight = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     image = models.ImageField(upload_to='product_images/', null=True, blank=True)
     expiry_date = models.DateField(default=timezone.now,null=True, blank=True, help_text="YYYY-MM-DD (Leave Blank if N/A)")

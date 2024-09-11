@@ -9,7 +9,8 @@ from . import models, forms
 # Create your views here.
 def inventory_dashboard(request):
     var = {}
-    var['inventory'] = Stock.objects.all()
+    var['all'] = Stock.objects.all()
+    var['for_sale'] = Stock.objects.filter(status='available').filter(is_sold=False)
     var['inventory_count'] = Stock.objects.count()
 
     var['not_sold'] = Stock.objects.filter(is_sold=False)
@@ -24,10 +25,11 @@ def inventory_dashboard(request):
     for cats in Category.objects.all():
         itemCount_categorized[cats.category] = 0
 
-    for x in var['inventory']:
-        str_x = str(x.product.category)
-        itemCount_categorized[str_x] += 1
-        
+    for x in var['all']:
+        if str(x) != 'N/A':
+            str_x = str(x.product.category)
+            itemCount_categorized[str_x] += 1
+            
     var['item_count'] = dict(sorted(itemCount_categorized.items(), key=lambda item: item[1], reverse=True))
 
     
@@ -82,7 +84,8 @@ def multi_remove_stocks(request):
             messages.success(request,"Successfully Removed Items")
             return HttpResponseRedirect('/inventory/dashboard')
         else:
-            return HttpResponseRedirect('/inventory/manage/remove')
+            messages.error(request,f"An error occured: {form.errors}")
+            return HttpResponseRedirect('/inventory/dashboard')
     else:
         form = forms.DeleteStockForm()
 

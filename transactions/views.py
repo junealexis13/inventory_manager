@@ -24,6 +24,7 @@ def get_total_price(request):
 def update_stock_is_sold(sender, instance, **kwargs):
     #update is_sold status for all related/ selected items stock items
     instance.stock_items.update(is_sold=True)
+    instance.stock_items.update(status='not_available')
 
 def transactions_dashboard(request):
     total_price = 0

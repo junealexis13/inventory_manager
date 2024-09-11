@@ -34,17 +34,23 @@ def product_forms(request):
         
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/inventory_forms?submitted=True')
+            messages.success(request,"Form Successfully Updated")
+            return HttpResponseRedirect('/products')
+        else:
+            messages.error(request,
+                           f"An Error Occured: \n LOGS: {form.errors}")
+            return HttpResponseRedirect('inventory_forms/?formID=productSpecs')
+
 
     else:
         if formID == "category":
-            form = forms.CategoryForms
+            form = forms.CategoryForms()
         elif formID == "supplier":
-            form = forms.SupplierForms
+            form = forms.SupplierForms()
         elif formID == "productSpecs":
-            form = forms.ProductForms
+            form = forms.ProductForms()
         elif formID == "stocks":
-            form = forms.StockForms
+            form = forms.StockForms()
         else:
             form = None
 
@@ -115,8 +121,11 @@ def manage_entries(request):
             models.Category.objects.filter(id__in=category_ids).delete()
             models.Supplier.objects.filter(id__in=supplier_ids).delete()
 
+            messages.success(request,"Successfully Deleted Items!")
             return HttpResponseRedirect('/inventory_forms')
         else:
+            messages.error(request,
+                           f"An Error Occured: \n LOGS: {form.errors}")
             return HttpResponseRedirect('/manage_entries')
     else:
         form = forms.DeleteForm()

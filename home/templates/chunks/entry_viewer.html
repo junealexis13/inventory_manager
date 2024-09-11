@@ -1,29 +1,31 @@
 <div class="main_wrapper">
     <h1>Manage Entries</h1>
     <p>Select items that you want to remove from the entry.</p>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" disabled>
-            Delete
-        </button>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete Entries</h5>
-                    </div>
-                    <div class="modal-body">
-                        Are you sure you want to delete the entries? This process is irreversible. You will not be able to recover the entries you made after this point.
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
+    <div class="del_wrapper">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" disabled>
+                Delete
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Entries</h5>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete the entries? This process is irreversible. You will not be able to recover the entries you made after this point.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 
