@@ -4,17 +4,9 @@
         {% if transaction_count == 0 %}
         <p>No transaction logs were found.</p>
     {% else %}
-        {% autoescape off %}
-            {{ plotly_sold_all }}
-        {% endautoescape %}
-
-        {% autoescape off %}
-            {{ plotly_sold_daily }}
-        {% endautoescape %}
-
-        {% autoescape off %}
-            {{ plotly_sold_quarterly }}
-        {% endautoescape %}
+        <img src="data:image/png;base64,{{ plotly_sold_all }}" alt="BarPlot-Rev">
+        <img src="data:image/png;base64,{{ plotly_sold_daily }}" alt="BarPlot-Rev">
+        <img src="data:image/png;base64,{{ plotly_sold_quarterly }}" alt="BarPlot-Rev">
     {% endif %}
     </div>
 </div>
@@ -26,17 +18,9 @@
         {% if transaction_count == 0 %}
         <p>No transaction logs were found.</p>
     {% else %}
-        {% autoescape off %}
-            {{ plotly_profit_all }}
-        {% endautoescape %}
-
-        {% autoescape off %}
-            {{ plotly_profit_daily }}
-        {% endautoescape %}
-
-        {% autoescape off %}
-            {{ plotly_profit_quarterly }}
-        {% endautoescape %}
+        <img src="data:image/png;base64,{{ plotly_profit_all }}" alt="BarPlot-Profit">
+        <img src="data:image/png;base64,{{ plotly_profit_daily }}" alt="BarPlot-Profit">
+        <img src="data:image/png;base64,{{ plotly_profit_quarterly }}" alt="BarPlot-Profit">
     {% endif %}
     </div>
 </div>
