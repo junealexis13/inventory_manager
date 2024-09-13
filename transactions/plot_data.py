@@ -108,10 +108,8 @@ class PLOT_DATA:
 
     def _bargraph(self, data, ddtype: str, dfclass: Literal['daily','all','quarter']):
         # Check if DataFrame is empty
+        fig, ax = plt.subplots(figsize=(5,5))
         if data is not None and not data.empty and ddtype:
-            fig, ax = plt.subplots(figsize=(8,5))
-            
-            
             if dfclass == 'daily':
                 if pd.api.types.is_datetime64_any_dtype(data['date_transaction']):
                     # data['date_transaction'] = pd.to_datetime(data['date_transaction'])
@@ -141,11 +139,12 @@ class PLOT_DATA:
                                 linewidth=3, edgecolor="black", facecolor=(48/255,200/255,217/255)
                                 ,ax=ax, errorbar=None)
                 ax.set_xlabel('')
-                ax.set_title('Quarter Data', fontsize=14)
+                ax.set_title('Quarterly Data', fontsize=14)
 
 
             ax.tick_params(which='major', axis='x', labelrotation=90, labelsize=7)
             ax.set_ylabel('Amount')
+            
             buffer = io.BytesIO()
             plt.tight_layout()
             plt.subplots_adjust(hspace=0.15)
@@ -160,7 +159,26 @@ class PLOT_DATA:
 
             return graph
         else:
-            return None  # Return None if the DataFrame is empty
+            match dfclass:
+                case 'daily':
+                    ax.set_title('Daily Data', fontsize=14)
+                case 'all':
+                    ax.set_title('Overall Data', fontsize=14)
+                case 'quarter':
+                    ax.set_title('Quarterly Data', fontsize=14)
+            ax.text(0.45,0.5,'No Data')
+            buffer = io.BytesIO()
+            plt.tight_layout()
+            plt.subplots_adjust(hspace=0.15)
+            plt.savefig(buffer, format='png')
+            plt.close()
+            buffer.seek(0)
+
+            # Encode the image to a base64 string
+            image_png = buffer.getvalue()
+            graph = base64.b64encode(image_png).decode('utf-8')
+            buffer.close()
+            return graph
 
 
     def return_df(self, datatype:Literal['revenue','profit']):
@@ -174,6 +192,7 @@ class PLOT_DATA:
         if datatype == 'revenue':
             if self.day_revenue:  
                 df1 = pd.DataFrame(self.day_revenue)
+                print(len(self.day_revenue))
             if self.all_revenue:  
                 df2 = pd.DataFrame(self.all_revenue)
             if self.quarter_revenue:  

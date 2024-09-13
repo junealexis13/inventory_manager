@@ -4,9 +4,18 @@
         {% if transaction_count == 0 %}
         <p>No transaction logs were found.</p>
     {% else %}
-        <img src="data:image/png;base64,{{ plotly_sold_all }}" alt="BarPlot-Rev">
-        <img src="data:image/png;base64,{{ plotly_sold_daily }}" alt="BarPlot-Rev">
-        <img src="data:image/png;base64,{{ plotly_sold_quarterly }}" alt="BarPlot-Rev">
+        <div class="image_wrapper">
+            <img src="data:image/png;base64,{{ plotly_sold_all }}" alt="BarPlot-Rev">
+        </div>
+        
+        <div class="image_wrapper">
+            <img src="data:image/png;base64,{{ plotly_sold_daily }}" alt="BarPlot-Rev">
+        </div>
+        
+        <div class="image_wrapper">
+            <img src="data:image/png;base64,{{ plotly_sold_quarterly }}" alt="BarPlot-Rev">
+        </div>
+        
     {% endif %}
     </div>
 </div>
@@ -18,9 +27,15 @@
         {% if transaction_count == 0 %}
         <p>No transaction logs were found.</p>
     {% else %}
-        <img src="data:image/png;base64,{{ plotly_profit_all }}" alt="BarPlot-Profit">
-        <img src="data:image/png;base64,{{ plotly_profit_daily }}" alt="BarPlot-Profit">
-        <img src="data:image/png;base64,{{ plotly_profit_quarterly }}" alt="BarPlot-Profit">
+        <div class="image_wrapper">
+            <img src="data:image/png;base64,{{ plotly_profit_all }}" alt="BarPlot-Profit">
+        </div>
+        <div class="image_wrapper">
+            <img src="data:image/png;base64,{{ plotly_profit_daily }}" alt="BarPlot-Profit">
+        </div>
+        <div class="image_wrapper">
+            <img src="data:image/png;base64,{{ plotly_profit_quarterly }}" alt="BarPlot-Profit">
+        </div>
     {% endif %}
     </div>
 </div>

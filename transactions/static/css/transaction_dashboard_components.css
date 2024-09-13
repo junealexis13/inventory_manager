@@ -100,9 +100,13 @@ button {
   margin: 2rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
 }
 
-.stat_wrap > div {
+.stat_wrap > .image_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 2px solid black;
   border-radius: 5px;
   margin: 5px;
