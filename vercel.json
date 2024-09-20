@@ -9,7 +9,7 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "my_port/wsgi.py"
+        "dest": "inventory_manager/wsgi.py"
       }
     ]
   }
