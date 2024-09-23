@@ -18,6 +18,11 @@ def inventory_dashboard(request):
     var['not_sold_count'] = Stock.objects.filter(is_sold=False).count()
     var['sold_count'] = Stock.objects.filter(is_sold=True).count()
 
+    var['status'] = {
+        'available': Stock.objects.filter(status='available').count(),
+        'not_available': Stock.objects.filter(status='not_available').count(),
+        'phased_out': Stock.objects.filter(status='phased_out').count(),
+    }
 
     itemCount_categorized = {}
     formID = request.GET.get('success', 'default')

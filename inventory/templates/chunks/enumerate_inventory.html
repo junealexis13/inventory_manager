@@ -37,7 +37,7 @@
 
     <div class="item_wrapper">
         <div class="header_wrapper stock_available">
-            <h1>Available Items</h1>
+            <h1>Available Items ({{ status.available}} item/s)</h1>
         </div>
         <div class="grid_wrap">
         {% for item in for_sale %}
@@ -96,7 +96,7 @@
     <br>
     <div class="item_wrapper">
         <div class="header_wrapper stock_not_available">
-            <h1>Unavailable Items</h1>
+            <h1>Unavailable Items ({{ status.not_available}} item/s)</h1>
         </div>
         <div class="grid_wrap">
         {% for item in all %}
@@ -155,7 +155,7 @@
     <br>
     <div class="item_wrapper">
         <div class="header_wrapper stock_phased_out">
-            <h1>Phased Out</h1>
+            <h1>Phased Out ({{ status.phased_out }} item/s)</h1>
         </div>
         <div class="grid_wrap">
         {% for item in inventory %}

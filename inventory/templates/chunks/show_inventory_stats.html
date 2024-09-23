@@ -1,30 +1,84 @@
 <div class="item_wrapper">
-    <h1 class="item_stat_header">Number of Items by Category</h1>
-    {% for cat, count in item_count.items %}
-    <div class="header_wrapper bg_item_stats">
-        <h1>{{ cat }}</h1>
-        <p>{{ count }}</p>
-    </div>
-    {% endfor %}
+    <p class="head_text">
+        This page shows a simplified summary of inventory information.
+    </p>
+</div>
+<div class="item_wrapper bordered">
+    
+    <table class="table table-bordered table-hover">
+        <thead>
+            <h1 class="item_stat_header">Items per Category</h1>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Category</th>
+                <th scope="col">Total Item Count</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for cat, count in item_count.items %}
+            <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <td>{{cat}}</td>
+              <td>{{count}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 </div>
 
-<div class="item_wrapper horizontal">
-
-
-    <div class="col sold_col">
-        <h1 class="item_stat_header">Sold Items</h1>
-        <div class="header_wrapper bg_item_stats">
-            <h1>{{ sold_count }}</h1>
+<div class="double_column">
+    <div class="item_wrapper bordered">
+        <div class="col sold_col">
+            <h1 class="item_stat_header"> <span class="material-symbols-outlined">
+                sell
+                </span> Sold Items</h1>
+            
+            <div class="header_wrapper bg_item_stats">
+                <h1>{{ sold_count }} items</h1>
+            </div>
+        </div>
+    
+        <div class="col unsold_col">
+            <h1 class="item_stat_header"><span class="material-symbols-outlined">
+                storefront
+                </span> Unsold Items</h1>
+    
+            <div class="header_wrapper bg_item_stats">
+                <h1>{{ not_sold_count }} items</h1>
+            </div>
+    
         </div>
     </div>
-
-    <div class="col unsold_col">
-        <h1 class="item_stat_header">Unsold Items</h1>
-
-        <div class="header_wrapper bg_item_stats">
-            <h1>{{ not_sold_count }}</h1>
+    <div class="item_wrapper bordered">
+        <div class="col">
+            <h1 class="item_stat_header"> <span class="material-symbols-outlined">
+                thumb_up
+                </span> Available</h1>
+            
+            <div class="header_wrapper bg_item_stats">
+                <h1>{{ status.available }} items</h1>
+            </div>
         </div>
-
+        <div class="col">
+            <h1 class="item_stat_header"> <span class="material-symbols-outlined">
+                warning
+                </span> Unavailable</h1>
+            
+            <div class="header_wrapper bg_item_stats">
+                <h1>{{ status.not_available }} items</h1>
+            </div>
+        </div>
+        <div class="col">
+            <h1 class="item_stat_header"> <span class="material-symbols-outlined">
+                remove_done
+                </span> Phased Out</h1>
+            
+            <div class="header_wrapper bg_item_stats">
+                <h1>{{ status.phased_out }} items</h1>
+            </div>
+        </div>
     </div>
 
 </div>
