@@ -253,14 +253,40 @@ ul > li {
     flex-direction: column;
     justify-content: flex-start;
     align-items: left;
+    margin: 0 1rem;
 }
 
 .item_wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: flex-start;
+    margin:  1rem 3rem;
+    padding: 0.5rem;
+
+    border-radius: 10px;
 }
 
+
+
+.item_wrapper > .head_text {
+    font-family: var(--global-font-style-navbar-menu);
+    font-size: 5;
+} 
+
+.bordered {
+    border: 2px dashed black;
+    background-color: #cdcdcd6d;
+}
+
+.double_column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+}
+
+.double_column > div {
+    margin: 1rem;
+}
 .header_wrapper {
     display: block;
     margin: 0.5rem;
@@ -284,7 +310,7 @@ span.below {
 
 .grid_wrap {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     gap: 0.3rem;
 }
@@ -321,6 +347,7 @@ button {
     font-family: var(--global-font-style-navbar-section-title);
     font-size: 1rem;
 }
+
 /* For Stats Tabs */
 
 .header_wrapper > p {
@@ -328,11 +355,11 @@ button {
 }
 
 .bg_item_stats {
-    background-color: #cdcdcd;
-    border: 1px dashed black;
+    background: linear-gradient(to right, #b8b8b8, #d9d9d9);;
+    border: 0.5px solid black;
     width: 50%;
     margin: 0.5rem 3rem;
-    border-radius: 2rem;
+    border-radius: 0.75rem;
 }
 
 .item_stat_header {
@@ -378,7 +405,7 @@ button {
 /* Modifiers */
 
 .horizontal {
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .col {
@@ -399,6 +426,7 @@ button {
 
     .dashboard_ui {
         width: 100%;
+        margin: 1rem 0;
     }
     .dashboard_sidebar {
         width: 20dvw;
